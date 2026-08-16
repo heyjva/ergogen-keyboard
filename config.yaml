@@ -210,3 +210,41 @@ pcbs:
           P8: MOSI
           P9: SCK
           P3: CS
+          # Rotary encoder signals (EVQWGD001 x2) on remaining free pins
+          P0: ENC1_A
+          P1: ENC1_C
+          P2: ENC2_A
+          P10: ENC2_C
+      # ---- Rotary encoder 1 (Panasonic EVQWGD001), Back side ----
+      # Placeholder position; adjust `where` (ref/shift/rotate) to taste.
+      encoder1:
+        what: ceoloide/encoder_evqwgd001
+        where:
+          ref: thumb_oouter_cluster
+          shift: [1px, 0]
+          rotate: 0
+        params:
+          side: B
+          reversible: false
+          A: ENC1_A
+          B: GND
+          C: ENC1_C
+          D: GND
+          from: GND
+          to: GND
+      # ---- Rotary encoder 2 (Panasonic EVQWGD001), Back side ----
+      encoder2:
+        what: ceoloide/encoder_evqwgd001
+        where:
+          ref: main_inner_top
+          shift: [0, 1.2py]
+          rotate: 0
+        params:
+          side: B
+          reversible: false
+          A: ENC2_A
+          B: GND
+          C: ENC2_C
+          D: GND
+          from: GND
+          to: GND

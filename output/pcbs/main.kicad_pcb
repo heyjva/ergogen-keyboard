@@ -135,10 +135,10 @@
 (net 51 "DISP1_5")
 (net 52 "RAW")
 (net 53 "RST")
-(net 54 "P10")
-(net 55 "P1")
-(net 56 "P0")
-(net 57 "P2")
+(net 54 "ENC2_C")
+(net 55 "ENC1_C")
+(net 56 "ENC1_A")
+(net 57 "ENC2_A")
 (net 58 "P101")
 (net 59 "P102")
 (net 60 "P107")
@@ -2890,9 +2890,9 @@
     
     
     (pad "24" thru_hole circle (at -7.62 -12.7 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 52 "RAW"))
-    (pad "1" thru_hole circle (at 7.62 -12.7 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 55 "P1"))
+    (pad "1" thru_hole circle (at 7.62 -12.7 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 55 "ENC1_C"))
       
-    (fp_text user "P1" (at 4.47 -12.7 0) (layer "B.SilkS")
+    (fp_text user "ENC1_C" (at 4.47 -12.7 0) (layer "B.SilkS")
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
             
@@ -2902,9 +2902,9 @@
             
     
     (pad "23" thru_hole circle (at -7.62 -10.16 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 3 "GND"))
-    (pad "2" thru_hole circle (at 7.62 -10.16 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 56 "P0"))
+    (pad "2" thru_hole circle (at 7.62 -10.16 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 56 "ENC1_A"))
       
-    (fp_text user "P0" (at 4.47 -10.16 0) (layer "B.SilkS")
+    (fp_text user "ENC1_A" (at 4.47 -10.16 0) (layer "B.SilkS")
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
             
@@ -2938,9 +2938,9 @@
             
     
     (pad "20" thru_hole circle (at -7.62 -2.539999999999999 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 1 "P21"))
-    (pad "5" thru_hole circle (at 7.62 -2.539999999999999 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 57 "P2"))
+    (pad "5" thru_hole circle (at 7.62 -2.539999999999999 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 57 "ENC2_A"))
       
-    (fp_text user "P2" (at 4.47 -2.539999999999999 0) (layer "B.SilkS")
+    (fp_text user "ENC2_A" (at 4.47 -2.539999999999999 0) (layer "B.SilkS")
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
             
@@ -3021,14 +3021,14 @@
     )
             
     
-    (pad "13" thru_hole circle (at -7.62 15.240000000000002 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 54 "P10"))
+    (pad "13" thru_hole circle (at -7.62 15.240000000000002 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 54 "ENC2_C"))
     (pad "12" thru_hole circle (at 7.62 15.240000000000002 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (net 45 "SCK"))
       
     (fp_text user "SCK" (at 4.47 15.240000000000002 0) (layer "B.SilkS")
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
             
-    (fp_text user "P10" (at -4.47 15.240000000000002 0) (layer "B.SilkS")
+    (fp_text user "ENC2_C" (at -4.47 15.240000000000002 0) (layer "B.SilkS")
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
             
@@ -3050,6 +3050,88 @@
 
   
   
+    
+
+  (footprint "ceoloide:encoder_evqwgd001"
+    (layer "B.Cu")
+    (at 153.51322950000002 149.3410483 -52)
+    (property "Reference" "ENC1"
+      (at 0 0 -52)
+      (layer "B.SilkS")
+      hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (attr through_hole)
+
+    
+    (fp_line (start -8.4 -6.4) (end 8.4 -6.4) (layer "Dwgs.User") (stroke (width 0.12) (type solid)))
+    (fp_line (start 8.4 -6.4) (end 8.4 7.4) (layer "Dwgs.User") (stroke (width 0.12) (type solid)))
+    (fp_line (start 8.4 7.4) (end -8.4 7.4) (layer "Dwgs.User") (stroke (width 0.12) (type solid)))
+    (fp_line (start -8.4 7.4) (end -8.4 -6.4) (layer "Dwgs.User") (stroke (width 0.12) (type solid)))
+    
+      
+      (fp_line (start -9.8 7.3) (end -9.8 -6.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_line (start -7.4 -6.3) (end -7.4 7.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_line (start -9.5 -6.6) (end -7.7 -6.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_line (start -7.7 7.6) (end -9.5 7.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_arc (start -7.7 7.3) (mid -7.4878 7.5121) (end -7.4 7.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_arc (start -9.5 7.3) (mid -9.7121 7.5121) (end -9.5 7.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_arc (start -7.7 -6.3) (mid -7.4878 -6.5121) (end -7.7 -6.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_arc (start -9.5 -6.3) (mid -9.7121 -6.5121) (end -9.8 -6.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+
+      
+      (pad "1" thru_hole circle (at 6.85 -6.2 -52) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+      (pad "2" thru_hole circle (at 5 -6.2 -52) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+      (pad "A" thru_hole circle (at 5.625 -3.81 -52) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 56 "ENC1_A"))
+      (pad "B" thru_hole circle (at 5.625 -1.27 -52) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+      (pad "C" thru_hole circle (at 5.625 1.27 -52) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 55 "ENC1_C"))
+      (pad "D" thru_hole circle (at 5.625 3.81 -52) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+
+      
+      (pad "" np_thru_hole circle (at 5.625 6.3 -52) (size 1.5 1.5) (drill 1.5) (layers "*.Cu" "*.Mask"))
+    
+  )
+    
+
+  (footprint "ceoloide:encoder_evqwgd001"
+    (layer "B.Cu")
+    (at 116 25.3 0)
+    (property "Reference" "ENC2"
+      (at 0 0 0)
+      (layer "B.SilkS")
+      hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (attr through_hole)
+
+    
+    (fp_line (start -8.4 -6.4) (end 8.4 -6.4) (layer "Dwgs.User") (stroke (width 0.12) (type solid)))
+    (fp_line (start 8.4 -6.4) (end 8.4 7.4) (layer "Dwgs.User") (stroke (width 0.12) (type solid)))
+    (fp_line (start 8.4 7.4) (end -8.4 7.4) (layer "Dwgs.User") (stroke (width 0.12) (type solid)))
+    (fp_line (start -8.4 7.4) (end -8.4 -6.4) (layer "Dwgs.User") (stroke (width 0.12) (type solid)))
+    
+      
+      (fp_line (start -9.8 7.3) (end -9.8 -6.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_line (start -7.4 -6.3) (end -7.4 7.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_line (start -9.5 -6.6) (end -7.7 -6.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_line (start -7.7 7.6) (end -9.5 7.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_arc (start -7.7 7.3) (mid -7.4878 7.5121) (end -7.4 7.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_arc (start -9.5 7.3) (mid -9.7121 7.5121) (end -9.5 7.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_arc (start -7.7 -6.3) (mid -7.4878 -6.5121) (end -7.7 -6.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      (fp_arc (start -9.5 -6.3) (mid -9.7121 -6.5121) (end -9.8 -6.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+
+      
+      (pad "1" thru_hole circle (at 6.85 -6.2 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+      (pad "2" thru_hole circle (at 5 -6.2 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+      (pad "A" thru_hole circle (at 5.625 -3.81 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 57 "ENC2_A"))
+      (pad "B" thru_hole circle (at 5.625 -1.27 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+      (pad "C" thru_hole circle (at 5.625 1.27 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 54 "ENC2_C"))
+      (pad "D" thru_hole circle (at 5.625 3.81 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+
+      
+      (pad "" np_thru_hole circle (at 5.625 6.3 0) (size 1.5 1.5) (drill 1.5) (layers "*.Cu" "*.Mask"))
+    
+  )
     
   (gr_line (start 15 93.77142847065225) (end 15 31) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
 (gr_line (start 20 26) (end 32.18861169999999 26) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
