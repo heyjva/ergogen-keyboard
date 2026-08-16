@@ -1,0 +1,9 @@
+# Ergogen-generated output is reproducible from config.yaml; keep it out of git
+# if you prefer. It is committed here so the PCB can be viewed without running
+# Ergogen. Uncomment to ignore instead.
+# output/
+
+# Editor / OS cruft
+.DS_Store
+*.swp
+node_modules/
