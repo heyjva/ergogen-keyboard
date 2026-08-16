@@ -270,14 +270,12 @@ pcbs:
           reversible: false
           from: GND
           to: RST
-      # ---- Mounting holes (M2, plated), placed in clear gaps ----
-      # Positioned to avoid switches/components (>=~15mm clearance). Anchored to
-      # nearby key points with mm shifts so they track the board layout.
+      # ---- Mounting holes (M2, plated) at board corners ----
       mounting_hole_tl:
         what: ceoloide/mounting_hole_plated
         where:
           ref: main_outer_num
-          shift: [8, 16.5]
+          shift: [0.41px, -0.38py]
           rotate: 0
         params:
           side: B
@@ -285,7 +283,15 @@ pcbs:
         what: ceoloide/mounting_hole_plated
         where:
           ref: main_inner_num
-          shift: [36, 13.5]
+          shift: [-1.1px, 0.7py]
+          rotate: 0
+        params:
+          side: B
+      mounting_hole_tr2:
+        what: ceoloide/mounting_hole_plated
+        where:
+          ref: main_inner_num
+          shift: [0.54px, -0.35py]
           rotate: 0
         params:
           side: B
@@ -293,15 +299,23 @@ pcbs:
         what: ceoloide/mounting_hole_plated
         where:
           ref: main_outer_bottom
-          shift: [8, -41.5]
+          shift: [0.41px, -0.48py]
+          rotate: 0
+        params:
+          side: B
+      mounting_hole_md:
+        what: ceoloide/mounting_hole_plated
+        where:
+          ref: main_single_home
+          shift: [-2.2px, -0.5py]
           rotate: 0
         params:
           side: B
       mounting_hole_br:
         what: ceoloide/mounting_hole_plated
         where:
-          ref: thumb_outer_cluster
-          shift: [-10.7, -20.5]
+          ref: main_single_home
+          shift: [0.3px, -1.8py]
           rotate: 0
         params:
           side: B

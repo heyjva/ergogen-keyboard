@@ -127,3 +127,50 @@ node /path/to/ergogen/src/cli.js . -o output
 ```
 
 This reads `config.yaml` + `footprints/` and writes `output/`.
+
+## Complete KiCad project (schematic + PCB)
+
+Ergogen only produces a `.kicad_pcb` (footprints + net connectivity, no
+schematic). The `kicad/` folder contains a **complete, openable KiCad project**
+generated from that PCB:
+
+| File | Description |
+|------|-------------|
+| `kicad/keyboard.kicad_pro` | KiCad project file (open this) |
+| `kicad/keyboard.kicad_pcb` | The PCB (copy of `output/pcbs/main.kicad_pcb`) |
+| `kicad/keyboard.kicad_sch` | Generated schematic |
+| `kicad/keyboard-schematic.pdf` | Rendered schematic (preview) |
+| `kicad/gen_schematic.py` | Schematic generator (uses KiCad's `pcbnew`) |
+| `kicad/build_kicad_project.sh` | Regenerates the whole project |
+
+Open **`kicad/keyboard.kicad_pro`** in KiCad.
+
+### About the schematic
+
+The schematic is generated from the PCB's netlist (KiCad has no built-in
+PCB→schematic reverse). Each component is a real symbol laid out on a grid, and
+connectivity is expressed with **global net labels** on each pin (the standard
+approach for auto-generated keyboard schematics). It's electrically correct and
+ERC-readable, but laid out on a grid rather than hand-drawn — useful for
+verification, BOM, and reference, not a pretty hand-routed diagram.
+
+### Regenerating the KiCad project
+
+Requires KiCad installed (`pcbnew` python module + `kicad-cli`):
+
+```bash
+# after regenerating output/ with ergogen:
+./kicad/build_kicad_project.sh
+```
+
+### Notes / expected DRC warnings
+
+- **Unconnected items**: the PCB has nets but no routed traces (ergogen doesn't
+  route) — route in KiCad. Not an error.
+- **`invalid_outline` from ENC1**: the EVQWGD001 encoder footprint adds an
+  Edge.Cuts roller cutout that reads as a secondary open contour. Harmless for
+  the design; clean it up in KiCad's Edge.Cuts if desired.
+- **lib_footprint / lib_symbol warnings**: footprints are embedded in the PCB
+  and standard KiCad symbol libs are used; these "library not in config"
+  warnings are cosmetic.
+
