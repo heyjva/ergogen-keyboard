@@ -39,7 +39,7 @@ points:
           key.column_net: P16
         single:
           key:
-            stagger: -9
+            stagger: 0
           rows.num.skip: true
           rows.top.skip: true
           rows.bottom.skip: true
@@ -160,23 +160,6 @@ pcbs:
           to: "{{row_net}}"
         adjust:
           shift: [0, -5]
-      # ---- nice!view display, single-side (Back) ----
-      niceview:
-        what: ceoloide/display_nice_view
-        where:
-          ref: main_single_home
-          shift: [0px,1.5py]
-          rotate: 0
-        params:
-          side: B
-          reversible: false
-          include_labels: true
-          invert_jumpers_position: false
-          MOSI: MOSI
-          SCK: SCK
-          VCC: VCC
-          GND: GND
-          CS: CS
       # ---- nice!nano MCU, single-side (Back) ----
       # NOTE: The param name is the PHYSICAL nice!nano pin; the value is the
       # logical NET assigned to that pin. The nice!nano does not break out
@@ -188,7 +171,7 @@ pcbs:
         what: ceoloide/mcu_nice_nano
         where:
           ref: main_single_home
-          shift: [0.25px,1.7py]
+          shift: [0.25px,1.33py]
           rotate: 0
         params:
           side: B
@@ -210,18 +193,18 @@ pcbs:
           P8: MOSI
           P9: SCK
           P3: CS
-          # Rotary encoder signals (EVQWGD001 x2) on remaining free pins
+          # Rotary encoder signal (EVQWGD001) on free pins
           P0: ENC1_A
           P1: ENC1_C
-          P2: ENC2_A
-          P10: ENC2_C
       # ---- Rotary encoder 1 (Panasonic EVQWGD001), Back side ----
       # Placeholder position; adjust `where` (ref/shift/rotate) to taste.
+      # The push-switch (pins 1 & 2) is wired into the key matrix on a free
+      # intersection: column P15 (single) x row P11 (num), via node ENC1_SW.
       encoder1:
         what: ceoloide/encoder_evqwgd001
         where:
-          ref: thumb_oouter_cluster
-          shift: [1px, 0]
+          ref: main_single_home
+          shift: [0.3px, -1px]
           rotate: 0
         params:
           side: B
@@ -230,21 +213,20 @@ pcbs:
           B: GND
           C: ENC1_C
           D: GND
-          from: GND
-          to: GND
-      # ---- Rotary encoder 2 (Panasonic EVQWGD001), Back side ----
-      encoder2:
-        what: ceoloide/encoder_evqwgd001
+          from: P15       # column net (switch pin 1)
+          to: ENC1_SW     # unique matrix node (switch pin 2)
+      # Diode for encoder 1 push-switch: ENC1_SW -> P11 (num row)
+      encoder1_diode:
+        what: ceoloide/diode_tht_sod123
         where:
-          ref: main_inner_top
-          shift: [0, 1.2py]
+          ref: main_single_home
+          shift: [0.3px, -1px]
           rotate: 0
         params:
           side: B
           reversible: false
-          A: ENC2_A
-          B: GND
-          C: ENC2_C
-          D: GND
-          from: GND
-          to: GND
+          include_tht: true
+          from: ENC1_SW
+          to: P11
+        adjust:
+          shift: [4, -5]
