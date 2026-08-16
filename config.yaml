@@ -39,7 +39,7 @@ points:
           key.column_net: P16
         single:
           key:
-            stagger: 0
+            stagger: -10
           rows.num.skip: true
           rows.top.skip: true
           rows.bottom.skip: true
@@ -175,7 +175,7 @@ pcbs:
         what: ceoloide/mcu_nice_nano
         where:
           ref: main_single_home
-          shift: [0.25px,1.33py]
+          shift: [0.25px,1.8py]
           rotate: 0
         params:
           side: B
@@ -205,7 +205,7 @@ pcbs:
         what: ceoloide/encoder_evqwgd001
         where:
           ref: main_single_home
-          shift: [0.3px, -1px]
+          shift: [0.3px, -0.87px]
           rotate: 0
         params:
           side: B
@@ -221,12 +221,12 @@ pcbs:
         what: ceoloide/diode_tht_sod123
         where:
           ref: main_single_home
-          shift: [0.3px, -1px]
+          shift: [0.15px, -.87px]
           rotate: 0
         params:
           side: B
           reversible: false
-          include_tht: true
+          include_tht: false
           from: ENC1_SW
           to: P11
         adjust:
@@ -237,8 +237,8 @@ pcbs:
         what: ceoloide/battery_connector_jst_ph_2
         where:
           ref: main_single_home
-          shift: [0px, 2.3py]
-          rotate: 0
+          shift: [-0.17px, 0.73py]
+          rotate: 90
         params:
           side: B
           reversible: false
@@ -250,7 +250,7 @@ pcbs:
         what: ceoloide/power_switch_smd_side
         where:
           ref: main_single_home
-          shift: [-1px, 2.3py]
+          shift: [0.9px,0py]
           rotate: 0
         params:
           side: B
@@ -263,19 +263,21 @@ pcbs:
         what: ceoloide/reset_switch_tht_top
         where:
           ref: main_single_home
-          shift: [1px, 2.3py]
-          rotate: 0
+          shift: [.86px, 0.65py]
+          rotate: 90
         params:
           side: B
           reversible: false
           from: GND
           to: RST
-      # ---- Mounting holes (M2, plated) at board corners ----
+      # ---- Mounting holes (M2, plated), placed in clear gaps ----
+      # Positioned to avoid switches/components (>=~15mm clearance). Anchored to
+      # nearby key points with mm shifts so they track the board layout.
       mounting_hole_tl:
         what: ceoloide/mounting_hole_plated
         where:
           ref: main_outer_num
-          shift: [-0.2px, 0.2py]
+          shift: [8, 16.5]
           rotate: 0
         params:
           side: B
@@ -283,7 +285,7 @@ pcbs:
         what: ceoloide/mounting_hole_plated
         where:
           ref: main_inner_num
-          shift: [0.6px, 0.2py]
+          shift: [36, 13.5]
           rotate: 0
         params:
           side: B
@@ -291,15 +293,15 @@ pcbs:
         what: ceoloide/mounting_hole_plated
         where:
           ref: main_outer_bottom
-          shift: [-0.2px, -0.2py]
+          shift: [8, -41.5]
           rotate: 0
         params:
           side: B
       mounting_hole_br:
         what: ceoloide/mounting_hole_plated
         where:
-          ref: thumb_oouter_cluster
-          shift: [0.3px, -0.3py]
+          ref: thumb_outer_cluster
+          shift: [-10.7, -20.5]
           rotate: 0
         params:
           side: B
