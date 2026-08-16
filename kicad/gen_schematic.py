@@ -146,12 +146,17 @@ class Sch:
         return (x + px, y - py)
 
     def wire(self, x1, y1, x2, y2):
+        # Snap endpoints to the 1.27mm grid so connections register cleanly.
+        x1, y1, x2, y2 = snap(x1), snap(y1), snap(x2), snap(y2)
+        if x1 == x2 and y1 == y2:
+            return
         self.items.append(
             f'  (wire (pts (xy {x1:.2f} {y1:.2f}) (xy {x2:.2f} {y2:.2f})) '
             f'(stroke (width 0) (type default)) (uuid {uid()}))'
         )
 
     def label(self, net, x, y, angle=0, justify="left"):
+        x, y = snap(x), snap(y)
         self.items.append(
             f'''  (global_label "{esc(net)}" (shape passive) (at {x:.2f} {y:.2f} {angle})
     (effects (font (size 1.27 1.27)) (justify {justify})) (uuid {uid()}))'''
@@ -161,6 +166,31 @@ class Sch:
         self.items.append(
             f'''  (text "{esc(s)}" (at {x:.2f} {y:.2f} 0)
     (effects (font (size {size} {size})) (justify left)) (uuid {uid()}))'''
+        )
+
+    def note(self, s, x, y, size=1.27, maxw=None):
+        # Multiline descriptive annotation, left-justified. KiCad expects the
+        # two-character escape \n inside the quoted string; escape only quotes
+        # and backslashes that are NOT part of an intended \n.
+        parts = s.split("\\n")
+        body = "\\n".join(p.replace("\\", "\\\\").replace('"', '\\"') for p in parts)
+        self.items.append(
+            f'''  (text "{body}" (at {x:.2f} {y:.2f} 0)
+    (effects (font (size {size} {size})) (justify left top)) (uuid {uid()}))'''
+        )
+
+    def box(self, x1, y1, x2, y2):
+        # Section outline rectangle on the notes graphic layer.
+        self.items.append(
+            f'''  (rectangle (start {x1:.2f} {y1:.2f}) (end {x2:.2f} {y2:.2f})
+    (stroke (width 0.15) (type solid)) (fill (type none)) (uuid {uid()}))'''
+        )
+
+    def hlabel(self, net, x, y, angle=0, justify="left", shape="input"):
+        # Directional global label (drawn as a tag/box, like COLn/ROWn buses).
+        self.items.append(
+            f'''  (global_label "{esc(net)}" (shape {shape}) (at {x:.2f} {y:.2f} {angle})
+    (effects (font (size 1.27 1.27)) (justify {justify})) (uuid {uid()}))'''
         )
 
     def render(self, paper="A2"):
@@ -215,47 +245,70 @@ def main():
 
     S = Sch()
 
-    # ===== Switch matrix section =====
-    S.text("Switch Matrix", 20, 12, size=3.81)
-    cx0, cy0 = 40.0, 30.0
-    cell_w, cell_h = 33.02, 25.4
-    # column labels (top)
+    # ===== Switch matrix section (Lily58-style horizontal switch->diode cells,
+    #       COL bus tags across the top, ROW bus tags down the left) =====
+    cx0, cy0 = 55.0, 45.0
+    cell_w, cell_h = 22.86, 33.02
+    n_cols, n_rows = len(COLS), len(ROWS)
+    mat_x1 = cx0 - 30.0
+    mat_y1 = cy0 - 22.0
+    mat_x2 = cx0 + n_cols * cell_w + 6.0
+    mat_y2 = cy0 + n_rows * cell_h + 4.0
+
+    S.box(mat_x1, mat_y1, mat_x2, mat_y2)
+    S.text("Switch Matrix", mat_x1 + 2.0, mat_y1 - 3.0, size=3.0)
+    S.note(
+        "Each key = a switch in series with a diode (COL -> switch -> diode -> ROW).\\n"
+        "The rotary encoder's push-switch sits on col P15 x row P11 (see Encoder).",
+        mat_x1 + 2.0, mat_y1 + 1.5, size=1.27,
+    )
+
+    # Column bus tags across the top (visual guide + net reference).
+    col_x = {}
     for ci, col in enumerate(COLS):
         x = cx0 + ci * cell_w
-        S.label(col, x, cy0 - 12.7, angle=90, justify="right")
-    # row labels (left)
+        col_x[col] = x
+        S.hlabel(col, x, mat_y1 + 8.0, angle=90, justify="right", shape="output")
+
+    # Row bus tags down the left (visual guide + net reference).
+    row_y = {}
     for ri, row in enumerate(ROWS):
         y = cy0 + ri * cell_h
-        S.label(row, cx0 - 20.32, y + 5.08, angle=0, justify="right")
+        row_y[row] = y
+        S.hlabel(row, mat_x1 + 4.0, y, angle=0, justify="right", shape="output")
 
     for (col, row), (ref, node) in sw_cell.items():
         if col not in COLS or row not in ROWS:
             continue
-        ci = COLS.index(col)
-        ri = ROWS.index(row)
-        x = cx0 + ci * cell_w
-        y = cy0 + ri * cell_h
-        # switch: pin1 up (to column), pin2 down (to diode)
+        x = col_x[col]
+        y = row_y[row]
+        # Vertical cell: switch on top, diode below. Switch pin1 (top) -> COL,
+        # pin2 (bottom) -> node; diode anode (top) -> node, cathode (bottom) ->
+        # ROW. Connectivity is entirely by net-name labels (robust); the parts
+        # are stacked with generous spacing so labels never collide.
         sw = S.symbol("Switch:SW_Push", ref, "SW_Push", x, y, angle=90)
-        p1 = S.pin_xy(sw, "1")
-        p2 = S.pin_xy(sw, "2")
-        # column label above pin1
+        p1 = S.pin_xy(sw, "1")  # top
+        p2 = S.pin_xy(sw, "2")  # bottom
         if p1:
-            S.wire(p1[0], p1[1], p1[0], p1[1] - 5.08)
-            S.label(col, p1[0], p1[1] - 5.08, angle=90, justify="right")
-        # diode below the switch (node between)
+            S.wire(p1[0], p1[1], p1[0], p1[1] - 2.54)
+            S.label(col, p1[0], p1[1] - 2.54, angle=90, justify="right")
+        if p2:
+            S.wire(p2[0], p2[1], p2[0], p2[1] + 2.54)
+            S.label(node, p2[0], p2[1] + 2.54, angle=270, justify="right")
         dref = diode_ref.get(node, f"D_{ref}")
         d = S.symbol("Device:D", dref, "D", x, y + 12.7, angle=90)
-        da = S.pin_xy(d, "2")  # anode -> node (up, to switch pin2)
-        dk = S.pin_xy(d, "1")  # cathode -> row (down)
-        if p2 and da:
-            S.wire(p2[0], p2[1], da[0], da[1])
+        da = S.pin_xy(d, "2")  # anode (top) -> node
+        dk = S.pin_xy(d, "1")  # cathode (bottom) -> ROW
+        if da:
+            S.wire(da[0], da[1], da[0], da[1] - 2.54)
+            S.label(node, da[0], da[1] - 2.54, angle=90, justify="right")
         if dk:
-            S.wire(dk[0], dk[1], dk[0], dk[1] + 5.08)
-            S.label(row, dk[0], dk[1] + 5.08, angle=270, justify="right")
+            S.wire(dk[0], dk[1], dk[0], dk[1] + 2.54)
+            S.label(row, dk[0], dk[1] + 2.54, angle=270, justify="right")
 
     # ===== Everything else: MCU, encoder, power, reset, battery =====
-    ox, oy = cx0 + len(COLS) * cell_w + 30, 30.0
+    ox = mat_x2 + 25.0
+    oy = mat_y1
     extras = [(r, c) for r, c in comps.items()
               if "switch_choc" not in c[0] and "diode" not in c[0]]
 
@@ -267,49 +320,92 @@ def main():
         if "diode" in c[0] and c[2].get("2") not in placed_nodes
     ]
 
-    # nice!nano
-    S.text("Microcontroller", ox, oy - 12, size=3.81)
-    for ref, (fpid, val, pads) in extras:
-        m = SYMBOL_MAP[fpid]
-        lib_id = m[0]
-        if "mcu_nice_nano" in fpid:
-            placed = S.symbol(lib_id, ref, "nice!nano", ox + 20, oy + 25)
-        elif "encoder" in fpid:
-            placed = S.symbol(lib_id, ref, "EVQWGD001", ox + 5, oy + 85)
-            S.text("Encoder", ox, oy + 70, size=3.81)
-        elif "battery" in fpid:
-            placed = S.symbol(lib_id, ref, "Battery", ox + 45, oy + 85)
-            S.text("Power", ox + 40, oy + 70, size=3.81)
-        elif "power_switch" in fpid:
-            placed = S.symbol(lib_id, ref, "Power SW", ox + 45, oy + 110)
-        elif "reset" in fpid:
-            placed = S.symbol(lib_id, ref, "Reset", ox + 45, oy + 130)
-        else:
-            continue
+    def emit_pins(placed, pads, padmap, side="right"):
         for pad_name, net in pads.items():
             if not net:
                 continue
-            pin_num = m[3].get(pad_name)
+            pin_num = padmap.get(pad_name)
             pxy = S.pin_xy(placed, pin_num) if pin_num else None
             if not pxy:
                 continue
-            # short stub + label to the right
-            S.wire(pxy[0], pxy[1], pxy[0] + 3.81, pxy[1])
-            S.label(net, pxy[0] + 3.81, pxy[1], angle=0, justify="left")
+            if side == "right":
+                S.wire(pxy[0], pxy[1], pxy[0] + 5.08, pxy[1])
+                S.label(net, pxy[0] + 5.08, pxy[1], angle=0, justify="left")
+            else:
+                S.wire(pxy[0], pxy[1], pxy[0] - 5.08, pxy[1])
+                S.label(net, pxy[0] - 5.08, pxy[1], angle=0, justify="right")
 
-    # Orphan diodes (e.g. encoder push-switch diode) placed near the encoder.
+    extras_d = {r: c for r, c in extras}
+
+    # --- Microcontroller section ---
+    mcu_ref = next((r for r, c in extras if "mcu_nice_nano" in c[0]), None)
+    mcu_x1, mcu_y1, mcu_x2, mcu_y2 = ox, oy, ox + 70.0, oy + 80.0
+    S.box(mcu_x1, mcu_y1, mcu_x2, mcu_y2)
+    S.text("Microcontroller", mcu_x1 + 2.0, mcu_y1 - 3.0, size=3.0)
+    S.note(
+        "nice!nano (or Pro Micro compatible). Pin name = physical pin;\\n"
+        "net label = logical signal assigned to it. Match your firmware\\n"
+        "to these pins.",
+        mcu_x1 + 2.0, mcu_y1 + 1.5,
+    )
+    if mcu_ref:
+        fpid, val, pads = extras_d[mcu_ref]
+        placed = S.symbol(SYMBOL_MAP[fpid][0], mcu_ref, "nice!nano",
+                          mcu_x1 + 35.0, mcu_y1 + 45.0)
+        emit_pins(placed, pads, SYMBOL_MAP[fpid][3], side="right")
+
+    # --- Encoder section ---
+    enc_ref = next((r for r, c in extras if "encoder" in c[0]), None)
+    enc_x1, enc_y1, enc_x2, enc_y2 = ox, mcu_y2 + 10.0, ox + 70.0, mcu_y2 + 65.0
+    S.box(enc_x1, enc_y1, enc_x2, enc_y2)
+    S.text("Encoder", enc_x1 + 2.0, enc_y1 - 3.0, size=3.0)
+    S.note(
+        "Panasonic EVQWGD001 scroll encoder. A/C to MCU, B/D to GND.\\n"
+        "Push-switch (S1/S2) is in the key matrix (col P15 x row P11)\\n"
+        "via node ENC1_SW and diode D30.",
+        enc_x1 + 2.0, enc_y1 + 1.5,
+    )
+    if enc_ref:
+        fpid, val, pads = extras_d[enc_ref]
+        placed = S.symbol(SYMBOL_MAP[fpid][0], enc_ref, "EVQWGD001",
+                          enc_x1 + 30.0, enc_y1 + 35.0)
+        emit_pins(placed, pads, SYMBOL_MAP[fpid][3], side="right")
+    # encoder push-switch diode (orphan) drawn inside the encoder box,
+    # vertically like the matrix diodes so its two labels stay well separated.
     for di, (dref, (fpid, val, pads)) in enumerate(orphan_diodes):
-        dx = ox + 5
-        dy = oy + 100 + di * 15.24
-        d = S.symbol("Device:D", dref, "D", dx, dy, angle=0)
-        ka = S.pin_xy(d, "2")  # anode -> node
-        kk = S.pin_xy(d, "1")  # cathode -> row
+        d = S.symbol("Device:D", dref, "D",
+                     enc_x1 + 15.0 + di * 15.0, enc_y1 + 48.0, angle=90)
+        ka = S.pin_xy(d, "2")  # anode (top) -> node ENC1_SW
+        kk = S.pin_xy(d, "1")  # cathode (bottom) -> row
         if ka:
-            S.wire(ka[0], ka[1], ka[0] - 3.81, ka[1])
-            S.label(pads.get("2"), ka[0] - 3.81, ka[1], angle=0, justify="right")
+            S.wire(ka[0], ka[1], ka[0], ka[1] - 2.54)
+            S.label(pads.get("2"), ka[0], ka[1] - 2.54, angle=90, justify="right")
         if kk:
-            S.wire(kk[0], kk[1], kk[0] + 3.81, kk[1])
-            S.label(pads.get("1"), kk[0] + 3.81, kk[1], angle=0, justify="left")
+            S.wire(kk[0], kk[1], kk[0], kk[1] + 2.54)
+            S.label(pads.get("1"), kk[0], kk[1] + 2.54, angle=270, justify="right")
+
+    # --- Power section (battery + power switch + reset) ---
+    pwr_x1, pwr_y1, pwr_x2, pwr_y2 = ox, enc_y2 + 10.0, ox + 70.0, enc_y2 + 70.0
+    S.box(pwr_x1, pwr_y1, pwr_x2, pwr_y2)
+    S.text("Power / Reset", pwr_x1 + 2.0, pwr_y1 - 3.0, size=3.0)
+    S.note(
+        "Battery+ -> power switch -> nice!nano RAW; Battery- -> GND.\\n"
+        "Reset button shorts RST to GND for reflashing.",
+        pwr_x1 + 2.0, pwr_y1 + 1.5,
+    )
+    py = pwr_y1 + 30.0
+    for ref, (fpid, val, pads) in extras:
+        if "battery" in fpid:
+            label = "Battery"
+        elif "power_switch" in fpid:
+            label = "Power SW"
+        elif "reset" in fpid:
+            label = "Reset"
+        else:
+            continue
+        placed = S.symbol(SYMBOL_MAP[fpid][0], ref, label, pwr_x1 + 30.0, py)
+        emit_pins(placed, pads, SYMBOL_MAP[fpid][3], side="right")
+        py += 20.0
 
     sch = S.render(paper="A1")
     path = f"{out_dir}/{proj}.kicad_sch"
