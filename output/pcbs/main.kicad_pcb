@@ -170,7 +170,7 @@
   
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 0 0 0)
+    (at 26 87.5 0)
     (property "Reference" "S1"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -234,7 +234,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 0 -17 0)
+    (at 26 70.5 0)
     (property "Reference" "S2"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -298,7 +298,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 0 -34 0)
+    (at 26 53.5 0)
     (property "Reference" "S3"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -362,7 +362,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 0 -51 0)
+    (at 26 36.5 0)
     (property "Reference" "S4"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -426,7 +426,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 18 0 0)
+    (at 44 87.5 0)
     (property "Reference" "S5"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -490,7 +490,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 18 -17 0)
+    (at 44 70.5 0)
     (property "Reference" "S6"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -554,7 +554,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 18 -34 0)
+    (at 44 53.5 0)
     (property "Reference" "S7"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -618,7 +618,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 18 -51 0)
+    (at 44 36.5 0)
     (property "Reference" "S8"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -682,7 +682,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 36 -6 0)
+    (at 62 81.5 0)
     (property "Reference" "S9"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -746,7 +746,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 36 -23 0)
+    (at 62 64.5 0)
     (property "Reference" "S10"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -810,7 +810,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 36 -40 0)
+    (at 62 47.5 0)
     (property "Reference" "S11"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -874,7 +874,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 36 -57 0)
+    (at 62 30.5 0)
     (property "Reference" "S12"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -938,7 +938,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 54 -11 0)
+    (at 80 76.5 0)
     (property "Reference" "S13"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1002,7 +1002,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 54 -28 0)
+    (at 80 59.5 0)
     (property "Reference" "S14"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1066,7 +1066,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 54 -45 0)
+    (at 80 42.5 0)
     (property "Reference" "S15"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1130,7 +1130,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 54 -62 0)
+    (at 80 25.5 0)
     (property "Reference" "S16"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1194,7 +1194,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 72 -6 0)
+    (at 98 81.5 0)
     (property "Reference" "S17"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1258,7 +1258,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 72 -23 0)
+    (at 98 64.5 0)
     (property "Reference" "S18"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1322,7 +1322,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 72 -40 0)
+    (at 98 47.5 0)
     (property "Reference" "S19"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1386,7 +1386,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 72 -57 0)
+    (at 98 30.5 0)
     (property "Reference" "S20"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1450,7 +1450,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 90 -3 0)
+    (at 116 84.5 0)
     (property "Reference" "S21"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1514,7 +1514,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 90 -20 0)
+    (at 116 67.5 0)
     (property "Reference" "S22"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1578,7 +1578,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 90 -37 0)
+    (at 116 50.5 0)
     (property "Reference" "S23"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1642,7 +1642,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 90 -54 0)
+    (at 116 33.5 0)
     (property "Reference" "S24"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1706,7 +1706,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 108 -11 0)
+    (at 134 76.5 0)
     (property "Reference" "S25"
       (at 0 8.8 0)
       (layer "B.SilkS")
@@ -1770,7 +1770,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 63 13 -13)
+    (at 89 100.5 -13)
     (property "Reference" "S26"
       (at 0 8.8 -13)
       (layer "B.SilkS")
@@ -1834,7 +1834,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 81.9461256 19.181967800000002 -23)
+    (at 107.9461256 106.68196780000001 -23)
     (property "Reference" "S27"
       (at 0 8.8 -23)
       (layer "B.SilkS")
@@ -1898,7 +1898,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 99.73261600000002 29.9553537 -39)
+    (at 125.73261600000002 117.4553537 -39)
     (property "Reference" "S28"
       (at 0 8.8 -39)
       (layer "B.SilkS")
@@ -1962,7 +1962,7 @@
 
   (footprint "ceoloide:switch_choc_v1_v2"
     (layer "B.Cu")
-    (at 113.96867700000001 44.504811700000005 -52)
+    (at 139.968677 132.0048117 -52)
     (property "Reference" "S29"
       (at 0 8.8 -52)
       (layer "B.SilkS")
@@ -2026,7 +2026,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 0 5 0)
+        (at 26 92.5 0)
         (property "Reference" "D1"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2053,7 +2053,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 0 -12 0)
+        (at 26 75.5 0)
         (property "Reference" "D2"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2080,7 +2080,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 0 -29 0)
+        (at 26 58.5 0)
         (property "Reference" "D3"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2107,7 +2107,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 0 -46 0)
+        (at 26 41.5 0)
         (property "Reference" "D4"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2134,7 +2134,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 18 5 0)
+        (at 44 92.5 0)
         (property "Reference" "D5"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2161,7 +2161,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 18 -12 0)
+        (at 44 75.5 0)
         (property "Reference" "D6"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2188,7 +2188,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 18 -29 0)
+        (at 44 58.5 0)
         (property "Reference" "D7"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2215,7 +2215,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 18 -46 0)
+        (at 44 41.5 0)
         (property "Reference" "D8"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2242,7 +2242,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 36 -1 0)
+        (at 62 86.5 0)
         (property "Reference" "D9"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2269,7 +2269,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 36 -18 0)
+        (at 62 69.5 0)
         (property "Reference" "D10"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2296,7 +2296,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 36 -35 0)
+        (at 62 52.5 0)
         (property "Reference" "D11"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2323,7 +2323,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 36 -52 0)
+        (at 62 35.5 0)
         (property "Reference" "D12"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2350,7 +2350,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 54 -6 0)
+        (at 80 81.5 0)
         (property "Reference" "D13"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2377,7 +2377,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 54 -23 0)
+        (at 80 64.5 0)
         (property "Reference" "D14"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2404,7 +2404,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 54 -40 0)
+        (at 80 47.5 0)
         (property "Reference" "D15"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2431,7 +2431,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 54 -57 0)
+        (at 80 30.5 0)
         (property "Reference" "D16"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2458,7 +2458,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 72 -1 0)
+        (at 98 86.5 0)
         (property "Reference" "D17"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2485,7 +2485,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 72 -18 0)
+        (at 98 69.5 0)
         (property "Reference" "D18"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2512,7 +2512,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 72 -35 0)
+        (at 98 52.5 0)
         (property "Reference" "D19"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2539,7 +2539,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 72 -52 0)
+        (at 98 35.5 0)
         (property "Reference" "D20"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2566,7 +2566,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 90 2 0)
+        (at 116 89.5 0)
         (property "Reference" "D21"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2593,7 +2593,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 90 -15 0)
+        (at 116 72.5 0)
         (property "Reference" "D22"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2620,7 +2620,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 90 -32 0)
+        (at 116 55.5 0)
         (property "Reference" "D23"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2647,7 +2647,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 90 -49 0)
+        (at 116 38.5 0)
         (property "Reference" "D24"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2674,7 +2674,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 108 -6 0)
+        (at 134 81.5 0)
         (property "Reference" "D25"
             (at 0 0 0)
             (layer "B.SilkS")
@@ -2701,7 +2701,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 61.8752447 17.8718503 -13)
+        (at 87.8752447 105.3718503 -13)
         (property "Reference" "D26"
             (at 0 0 -13)
             (layer "B.SilkS")
@@ -2728,7 +2728,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 79.99247 23.7844921 -23)
+        (at 105.99247 111.28449210000001 -23)
         (property "Reference" "D27"
             (at 0 0 -23)
             (layer "B.SilkS")
@@ -2755,7 +2755,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 96.58601400000002 33.841083499999996 -39)
+        (at 122.58601400000002 121.3410835 -39)
         (property "Reference" "D28"
             (at 0 0 -39)
             (layer "B.SilkS")
@@ -2782,7 +2782,7 @@
 
     (footprint "ceoloide:diode_tht_sod123"
         (layer "B.Cu")
-        (at 110.02862320000001 47.583119100000005 -52)
+        (at 136.02862320000003 135.0831191 -52)
         (property "Reference" "D29"
             (at 0 0 -52)
             (layer "B.SilkS")
@@ -2809,7 +2809,7 @@
 
   (footprint "ceoloide:display_nice_view"
     (layer B.Cu)
-    (at 108 -42.5 0)
+    (at 134 45 0)
     (property "Reference" "DISP1"
       (at 0 20 0)
       (layer "B.SilkS")
@@ -2866,7 +2866,7 @@
     
   (footprint "ceoloide:mcu_nice_nano"
     (layer "B.Cu")
-    (at 113.5 -46.7 0)
+    (at 139.5 40.8 0)
     (property "Reference" "MCU1"
       (at 0 -15 0)
       (layer "B.SilkS")
@@ -3051,40 +3051,40 @@
   
   
     
-  (gr_line (start -11 6.271428470652254) (end -11 -56.5) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start -6 -61.5) (end 6.188611700000024 -61.5) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 7.769750680000021 -61.75658356) (end 24.8794833200002 -67.4598277733334) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 25.122402814326847 -67.53400078175746) (end 42.34332201432663 -72.31758944842406) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 43.681541499999994 -72.5) (end 64.31845850000002 -72.5) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 65.65667798567335 -72.31758944842407) (end 82.74491551432655 -67.57085680157596) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 83.26113998648634 -67.45647666891894) (end 100.59181748648649 -64.56803041891892) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 101.41381250000002 -64.5) (end 124.64629528046511 -64.5) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 129.64607898137797 -59.54650950186806) (end 129.99978370091287 -21.523252151866473) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 130 -21.476742649998414) (end 130 -0.5521510873231819) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 129.9989120957856 -0.44785608532492915) (end 129.06459422978736 44.33457093343441) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 127.14398949906834 48.17032975872834) (end 116.40689406921699 56.559068113334675) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 109.38853287685745 55.697321651108254) (end 99.30705440922137 42.79361757649119) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 98.428139958556 41.91851810089084) (end 85.14027654919009 31.62967039004608) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 83.91235867978801 30.931271212378107) (end 68.10356582316905 24.70121441590828) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 67.3124608319841 24.46282685897179) (end 50.02550940757777 20.778920606331027) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_line (start 49.81350585328078 20.738504408833396) (end -6.830112961743596 11.202038243421255) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start -6 -61.5) (mid -9.5355339 -60.0355339) (end -11 -56.5) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 6.188611700000024 -61.5) (mid 6.989523000000024 -61.564562699999996) (end 7.769750700000024 -61.7565836) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 25.12240280000019 -67.5340008333334) (mid 25.000472000000194 -67.4984570333334) (end 24.879483300000192 -67.4598277333334) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 43.681541499999994 -72.5) (mid 43.00624429999999 -72.4541875) (end 42.34332199999999 -72.3175895) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 65.65667800000001 -72.3175895) (mid 64.99375570000002 -72.4541875) (end 64.31845850000002 -72.5) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 82.74491549999989 -67.57085675000003) (mid 83.00151469999989 -67.50683815000004) (end 83.26113999999988 -67.45647665000003) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 100.59181750000002 -64.5680304) (mid 101.00140980000002 -64.5170366) (end 101.41381250000002 -64.5) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 129.64607898046512 -59.5465095) (mid 128.16534718046512 -63.0519394) (end 124.64629528046511 -64.5) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 130 -21.476742649998414) (mid 129.9999459 -21.499997649998413) (end 129.9997837 -21.523252149998413) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 129.9989121 -0.44785608732318183) (mid 129.999728 -0.5000007873231819) (end 130 -0.5521510873231819) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 127.14398943400178 48.170329731435245) (mid 128.53654663400178 46.46888493143524) (end 129.0645942340018 44.334570931435245) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 109.38853290415045 55.69732158604169) (mid 112.71923990415046 57.58174498604169) (end 116.40689400415046 56.55906808604169) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 99.30705438192835 42.793617641557724) (mid 98.89483648192835 42.328709841557725) (end 98.42813998192835 41.91851814155772) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 85.14027657256243 31.629670430712974) (mid 84.55110657256243 31.236887230712973) (end 83.91235867256242 30.931271330712974) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 68.10356581594347 24.701214434243152) (mid 67.71294591594348 24.565651534243152) (end 67.31246081594348 24.462826834243153) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start 50.02550939153719 20.778920581602396) (mid 49.919725691537195 20.757568481602398) (end 49.813505791537196 20.738504381602397) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
-(gr_arc (start -11 6.271428470652254) (mid -9.8177588 9.500161570652255) (end -6.830113 11.202038170652255) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+  (gr_line (start 15 93.77142847065225) (end 15 31) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 20 26) (end 32.18861169999999 26) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 33.76975067999999 25.743416440000004) (end 50.87948332000003 20.04017222666666) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 51.12240281432667 19.965999218242594) (end 68.34332201432665 15.182410551575927) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 69.6815415 15) (end 90.31845849999999 15) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 91.65667798567333 15.182410551575924) (end 108.74491551432668 19.92914319842408) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 109.26113998648648 20.043523331081083) (end 126.59181748648646 22.931969581081077) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 127.4138125 23) (end 150.64629528046513 23) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 155.64607898137797 27.953490498130122) (end 155.99978370091284 65.97674784812989) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 156 66.02325734999977) (end 156 86.94784891267591) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 155.99891209578564 87.05214391467416) (end 155.0645942297874 131.8345709334335) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 153.14398949906828 135.67032975872837) (end 142.4068940692169 144.05906811333477) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 135.3885328768574 143.1973216511082) (end 125.30705440922144 130.29361757649127) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 124.42813995855603 129.41851810089088) (end 111.1402765491901 119.12967039004612) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 109.91235867978804 118.43127121237812) (end 94.10356582316915 112.20121441590834) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 93.31246083198417 111.96282685897182) (end 76.02550940757773 108.27892060633101) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_line (start 75.81350585328076 108.23850440883339) (end 19.16988703825639 98.70203824342126) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 20 26) (mid 16.4644661 27.4644661) (end 15 31) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 32.18861169999999 26) (mid 32.98952299999999 25.9354373) (end 33.76975069999999 25.7434164) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 51.12240280000003 19.96599916666666) (mid 51.00047200000003 20.00154296666666) (end 50.87948330000003 20.04017226666666) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 69.6815415 15) (mid 69.00624429999999 15.0458125) (end 68.343322 15.1824105) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 91.65667799999999 15.1824105) (mid 90.9937557 15.0458125) (end 90.31845849999999 15) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 108.74491550000003 19.929143250000006) (mid 109.00151470000003 19.993161850000007) (end 109.26114000000003 20.043523350000008) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 126.5918175 22.931969600000002) (mid 127.0014098 22.9829634) (end 127.4138125 23) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 155.64607898046512 27.9534905) (mid 154.16534718046512 24.448060599999998) (end 150.64629528046513 23) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 156 66.02325734999977) (mid 155.9999459 66.00000234999976) (end 155.9997837 65.97674784999977) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 155.9989121 87.0521439126759) (mid 155.999728 86.9999992126759) (end 156 86.94784891267591) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 153.14398943400175 135.67032973143523) (mid 154.53654663400175 133.96888493143524) (end 155.06459423400176 131.83457093143525) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 135.3885329041504 143.19732158604177) (mid 138.71923990415038 145.08174498604177) (end 142.4068940041504 144.05906808604175) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 125.30705438192841 130.29361764155777) (mid 124.89483648192841 129.82870984155778) (end 124.42813998192841 129.41851814155777) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 111.14027657256244 119.12967043071299) (mid 110.55110657256245 118.736887230713) (end 109.91235867256243 118.43127133071299) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 94.10356581594354 112.2012144342432) (mid 93.71294591594355 112.06565153424319) (end 93.31246081594355 111.96282683424319) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 76.02550939153713 108.27892058160239) (mid 75.91972569153712 108.25756848160239) (end 75.81350579153712 108.2385043816024) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
+(gr_arc (start 15 93.77142847065225) (mid 16.1822412 97.00016157065225) (end 19.169887 98.70203817065226) (layer Edge.Cuts) (stroke (width 0.15) (type default)))
 
 )
 

@@ -10,6 +10,12 @@ units:
 points:
   zones:
     main:
+      # Global placement: shift the whole board so it sits at the top-left of
+      # the A3 sheet working area (~15mm inset). Everything (thumb, outlines,
+      # footprints) cascades from this zone, so this translates the board as a
+      # rigid unit without affecting geometry or wiring.
+      anchor:
+        shift: [26, -87.5]
       key:
         padding: 1ky
         spread: 1kx
