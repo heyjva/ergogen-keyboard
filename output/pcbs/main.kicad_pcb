@@ -8,7 +8,7 @@
     (thickness 1.6)
     (legacy_teardrops no)
   )
-  (paper "A3")
+  (paper "User" 171.00 160.08)
   (title_block
     (title "main")
     (date "2026-08-16")
