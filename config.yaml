@@ -231,3 +231,75 @@ pcbs:
           to: P11
         adjust:
           shift: [4, -5]
+      # ---- Battery connector (JST-PH 2-pin), Back side ----
+      # BAT_P -> power switch -> RAW; BAT_N -> GND. Place near the MCU.
+      battery:
+        what: ceoloide/battery_connector_jst_ph_2
+        where:
+          ref: main_single_home
+          shift: [0px, 2.3py]
+          rotate: 0
+        params:
+          side: B
+          reversible: false
+          BAT_P: BAT_P
+          BAT_N: GND
+      # ---- Power switch (SMD side-actuated), Back side ----
+      # Switches battery positive (BAT_P) to the nice!nano RAW pin.
+      power_switch:
+        what: ceoloide/power_switch_smd_side
+        where:
+          ref: main_single_home
+          shift: [-1px, 2.3py]
+          rotate: 0
+        params:
+          side: B
+          reversible: false
+          from: BAT_P
+          to: RAW
+      # ---- Reset button (THT top), Back side ----
+      # Connects RST -> GND; does not use a GPIO.
+      reset:
+        what: ceoloide/reset_switch_tht_top
+        where:
+          ref: main_single_home
+          shift: [1px, 2.3py]
+          rotate: 0
+        params:
+          side: B
+          reversible: false
+          from: GND
+          to: RST
+      # ---- Mounting holes (M2, plated) at board corners ----
+      mounting_hole_tl:
+        what: ceoloide/mounting_hole_plated
+        where:
+          ref: main_outer_num
+          shift: [-0.2px, 0.2py]
+          rotate: 0
+        params:
+          side: B
+      mounting_hole_tr:
+        what: ceoloide/mounting_hole_plated
+        where:
+          ref: main_inner_num
+          shift: [0.6px, 0.2py]
+          rotate: 0
+        params:
+          side: B
+      mounting_hole_bl:
+        what: ceoloide/mounting_hole_plated
+        where:
+          ref: main_outer_bottom
+          shift: [-0.2px, -0.2py]
+          rotate: 0
+        params:
+          side: B
+      mounting_hole_br:
+        what: ceoloide/mounting_hole_plated
+        where:
+          ref: thumb_oouter_cluster
+          shift: [0.3px, -0.3py]
+          rotate: 0
+        params:
+          side: B
