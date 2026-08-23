@@ -193,17 +193,19 @@ class Sch:
         self.sym_cache[lib_id] = (blk2, pin_positions(blk), symname)
         return self.sym_cache[lib_id]
 
-    def symbol(self, lib_id, ref, value, x, y, angle=0, mirror=None):
+    def symbol(self, lib_id, ref, value, x, y, angle=0, mirror=None,
+               hide_value=False, ref_dx=0.0, ref_dy=-10.16, ref_size=1.27):
         _, pinpos, symname = self.load_symbol(lib_id)
         x, y = snap(x), snap(y)
         mstr = f" (mirror {mirror})" if mirror else ""
+        val_hide = " (hide yes)" if hide_value else ""
         self.items.append(
             f'''  (symbol (lib_id "{lib_id}") (at {x:.2f} {y:.2f} {angle}){mstr} (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (uuid {uid()})
-    (property "Reference" "{esc(ref)}" (at {x:.2f} {y-10.16:.2f} 0)
-      (effects (font (size 1.27 1.27))))
+    (property "Reference" "{esc(ref)}" (at {x+ref_dx:.2f} {y+ref_dy:.2f} 0)
+      (effects (font (size {ref_size} {ref_size}))))
     (property "Value" "{esc(value)}" (at {x:.2f} {y+10.16:.2f} 0)
-      (effects (font (size 1.27 1.27))))
+      (effects (font (size 1.0 1.0))){val_hide})
   )'''
         )
         return (x, y, pinpos, angle, mirror)
@@ -362,18 +364,17 @@ def main():
     S = Sch()
 
     # ===== Switch matrix section (Lily58-style: drawn COL/ROW bus rails,
-    #       cells wired to them; labels only at the bus entry points) =====
-    # Use grid-aligned (multiples of 1.27) geometry so pin taps land exactly on
-    # the rails.
-    cell_w, cell_h = 25.4, 33.02          # 20 and 26 grid units
+    #       cells wired to them; COL/ROW names labelled once at the rail ends) =====
+    # Grid-aligned geometry (multiples of 1.27) so pin taps land exactly on rails.
+    cell_w, cell_h = 30.48, 33.02         # 24 and 26 grid units (wider columns)
     n_cols, n_rows = len(COLS), len(ROWS)
-    cx0, cy0 = 69.85, 55.88               # first switch center (grid aligned)
-    col_rail_dx = 12.7                    # COL rail sits left of the switch
+    cx0, cy0 = 76.20, 62.23               # first switch center (grid aligned)
+    col_rail_dx = 8.89                    # COL rail sits just left of the switch
     row_rail_dy = 22.86                   # ROW rail sits below the diode
-    mat_x1 = cx0 - col_rail_dx - 12.7
-    mat_y1 = cy0 - 25.4
-    mat_x2 = cx0 + (n_cols - 1) * cell_w + 19.05
-    mat_y2 = cy0 + (n_rows - 1) * cell_h + row_rail_dy + 8.89
+    mat_x1 = cx0 - col_rail_dx - 15.24
+    mat_y1 = cy0 - 30.48
+    mat_x2 = cx0 + (n_cols - 1) * cell_w + 20.32
+    mat_y2 = cy0 + (n_rows - 1) * cell_h + row_rail_dy + 10.16
 
     S.box(mat_x1, mat_y1, mat_x2, mat_y2)
     S.text("Switch Matrix", mat_x1 + 2.0, mat_y1 - 3.0, size=3.0)
@@ -386,19 +387,26 @@ def main():
     # Geometry of every column/row line (all grid-aligned).
     col_x = {c: cx0 + i * cell_w for i, c in enumerate(COLS)}
     row_y = {r: cy0 + i * cell_h for i, r in enumerate(ROWS)}
+    col_rail_x = {c: col_x[c] - col_rail_dx for c in COLS}
     row_rail_y = {r: row_y[r] + row_rail_dy for r in ROWS}
 
     rail_left = snap(mat_x1 + 5.08)
     rail_right = snap(mat_x2 - 5.08)
+    col_rail_top = snap(mat_y1 + 12.7)
+    col_rail_bot = snap(mat_y2 - 5.08)
 
-    # Horizontal ROW rails only (drawn wires, one net each) with the ROW name
-    # labelled at the left. COLumns enter as labels on each switch's top pin
-    # (like the reference schematic) -- this avoids crossing COL/ROW buses that
-    # would otherwise short the matrix together.
+    # Full vertical COL rails (one net + one label each). Full horizontal ROW
+    # rails (one net + one label each). COL and ROW rails cross freely WITHOUT
+    # junctions (KiCad keeps crossing wires separate); each switch/diode taps
+    # its rail with an explicit junction. This is exactly how the reference
+    # keyboard schematic wires its matrix.
+    for c in COLS:
+        rx = col_rail_x[c]
+        S.wire(rx, col_rail_top, rx, col_rail_bot)
+        S.label(c, rx, col_rail_top, angle=90, justify="right")
     for r in ROWS:
         ry = row_rail_y[r]
         S.wire(rail_left, ry, rail_right, ry)
-        # Label placed exactly on the rail's left endpoint so it attaches.
         S.label(r, rail_left, ry, angle=180, justify="right")
 
     for (col, row), (ref, node) in sw_cell.items():
@@ -406,17 +414,21 @@ def main():
             continue
         x = col_x[col]
         y = row_y[row]
+        rx = col_rail_x[col]
         ry = row_rail_y[row]
-        # Switch (vertical, angle 90): top pin -> COL label; bottom pin -> diode.
-        sw = S.symbol("Switch:SW_Push", ref, "SW_Push", x, y, angle=90)
+        # Switch (vertical, angle 90): top pin taps LEFT onto the COL rail
+        # (junction); bottom pin drops into the diode.
+        sw = S.symbol("Switch:SW_Push", ref, "SW_Push", x, y, angle=90,
+                      hide_value=True, ref_dx=5.08, ref_dy=0.0, ref_size=1.0)
         p_top = S.pin_xy(sw, "2")     # top
         p_bot = S.pin_xy(sw, "1")     # bottom
         if p_top:
-            S.wire(p_top[0], p_top[1], p_top[0], p_top[1] - 3.81)
-            S.label(col, p_top[0], p_top[1] - 3.81, angle=90, justify="right")
-        # Diode straight below; cathode drops onto the horizontal ROW rail.
+            S.wire(p_top[0], p_top[1], rx, p_top[1])   # tap to COL rail
+            S.junction(rx, p_top[1])
+        # Diode straight below; cathode drops onto the ROW rail (junction).
         dref = diode_ref.get(node, f"D_{ref}")
-        d = S.symbol("Device:D", dref, "D", x, y + 12.7, angle=90)
+        d = S.symbol("Device:D", dref, "D", x, y + 12.7, angle=90,
+                     hide_value=True, ref_dx=5.08, ref_dy=0.0, ref_size=1.0)
         da = S.pin_xy(d, "2")  # anode (top)
         dk = S.pin_xy(d, "1")  # cathode (bottom)
         if p_bot and da:
