@@ -147,6 +147,33 @@ class Sch:
             px, py = py, -px
         return (x + px, y - py)
 
+    def pin_dir(self, placed, pin_num):
+        """Return the outward unit direction (dx, dy) a pin's wire should
+        leave in, accounting for symbol rotation/mirror. In the KiCad symbol
+        library a pin's `angle` points from the pin endpoint toward the body,
+        so the outward wire direction is the opposite."""
+        x, y, pinpos, angle, mirror = placed
+        if pin_num not in pinpos:
+            return (1, 0)
+        _px, _py, pa = pinpos[pin_num]
+        # unit vector the pin *points* (toward body) in lib space
+        dirs = {0: (1, 0), 90: (0, 1), 180: (-1, 0), 270: (0, -1)}
+        dx, dy = dirs.get(pa, (1, 0))
+        # outward is opposite
+        dx, dy = -dx, -dy
+        if mirror == 'y':
+            dx = -dx
+        if mirror == 'x':
+            dy = -dy
+        if angle == 90:
+            dx, dy = -dy, dx
+        elif angle == 180:
+            dx, dy = -dx, -dy
+        elif angle == 270:
+            dx, dy = dy, -dx
+        # schematic Y is inverted vs lib Y
+        return (dx, -dy)
+
     def wire(self, x1, y1, x2, y2):
         # Snap endpoints to the 1.27mm grid so connections register cleanly.
         x1, y1, x2, y2 = snap(x1), snap(y1), snap(x2), snap(y2)
@@ -348,6 +375,39 @@ def main():
                 S.wire(pxy[0], pxy[1], pxy[0] - 5.08, pxy[1])
                 S.label(net, pxy[0] - 5.08, pxy[1], angle=0, justify="right")
 
+    def emit_pins_directional(placed, pads, padmap, stub=6.35, stagger=True):
+        """Draw a stub wire outward from each pin along its real direction and
+        put the net label at the stub end. Handles symbols whose pins point in
+        different directions (encoder, SPDT switch) so nothing overlaps the
+        symbol body. With stagger=False all stubs in a given direction share the
+        same length (good for in-line connectors like the nice!nano)."""
+        seen = {}
+        for pad_name, net in pads.items():
+            if not net:
+                continue
+            pin_num = padmap.get(pad_name)
+            if not pin_num:
+                continue
+            pxy = S.pin_xy(placed, pin_num)
+            if not pxy:
+                continue
+            dx, dy = S.pin_dir(placed, pin_num)
+            key = (round(dx), round(dy))
+            n = seen.get(key, 0)
+            seen[key] = n + 1
+            length = stub + (n * 2.54 if stagger else 0)
+            ex, ey = pxy[0] + dx * length, pxy[1] + dy * length
+            S.wire(pxy[0], pxy[1], ex, ey)
+            if dx > 0:
+                just, ang = "left", 0
+            elif dx < 0:
+                just, ang = "right", 0
+            elif dy > 0:
+                just, ang = "right", 270
+            else:
+                just, ang = "right", 90
+            S.label(net, ex, ey, angle=ang, justify=just)
+
     def emit_pins_vertical(placed, pads, padmap):
         # Fan pin labels out to the right with increasing stub lengths so labels
         # from different pins never coincide (avoids accidental net merges).
@@ -367,8 +427,11 @@ def main():
     extras_d = {r: c for r, c in extras}
 
     # --- Microcontroller section ---
+    # Wide box; the nice!nano is a tall 2-column part, so its pins already fan
+    # left/right. We give plenty of width so the net labels sit clear of it.
     mcu_ref = next((r for r, c in extras if "mcu_nice_nano" in c[0]), None)
-    mcu_x1, mcu_y1, mcu_x2, mcu_y2 = ox, oy, ox + 70.0, oy + 80.0
+    mcu_x1, mcu_y1 = ox, oy
+    mcu_x2, mcu_y2 = ox + 95.0, oy + 95.0
     S.box(mcu_x1, mcu_y1, mcu_x2, mcu_y2)
     S.text("Microcontroller", mcu_x1 + 2.0, mcu_y1 - 3.0, size=3.0)
     S.note(
@@ -380,12 +443,16 @@ def main():
     if mcu_ref:
         fpid, val, pads = extras_d[mcu_ref]
         placed = S.symbol(SYMBOL_MAP[fpid][0], mcu_ref, "nice!nano",
-                          mcu_x1 + 35.0, mcu_y1 + 45.0)
-        emit_pins(placed, pads, SYMBOL_MAP[fpid][3], side="right")
+                          mcu_x1 + 47.5, mcu_y1 + 52.0)
+        emit_pins_directional(placed, pads, SYMBOL_MAP[fpid][3], stub=7.62,
+                              stagger=False)
 
     # --- Encoder section ---
+    # The rotary-encoder symbol has A/B/C on the left and S1/S2 on the right, so
+    # use the directional emitter to fan labels out on the correct sides.
     enc_ref = next((r for r, c in extras if "encoder" in c[0]), None)
-    enc_x1, enc_y1, enc_x2, enc_y2 = ox, mcu_y2 + 10.0, ox + 70.0, mcu_y2 + 65.0
+    enc_x1, enc_y1 = ox, mcu_y2 + 12.0
+    enc_x2, enc_y2 = ox + 95.0, mcu_y2 + 72.0
     S.box(enc_x1, enc_y1, enc_x2, enc_y2)
     S.text("Encoder", enc_x1 + 2.0, enc_y1 - 3.0, size=3.0)
     S.note(
@@ -397,27 +464,27 @@ def main():
     if enc_ref:
         fpid, val, pads = extras_d[enc_ref]
         placed = S.symbol(SYMBOL_MAP[fpid][0], enc_ref, "EVQWGD001",
-                          enc_x1 + 30.0, enc_y1 + 35.0)
-        emit_pins(placed, pads, SYMBOL_MAP[fpid][3], side="right")
-    # encoder push-switch diode (orphan) drawn inside the encoder box,
-    # vertically like the matrix diodes so its two labels stay well separated.
+                          enc_x1 + 47.5, enc_y1 + 42.0)
+        emit_pins_directional(placed, pads, SYMBOL_MAP[fpid][3], stub=8.89)
+    # encoder push-switch diode (orphan) drawn to the LEFT of the encoder, well
+    # clear of the encoder's pins.
     for di, (dref, (fpid, val, pads)) in enumerate(orphan_diodes):
         d = S.symbol("Device:D", dref, "D",
-                     enc_x1 + 15.0 + di * 15.0, enc_y1 + 48.0, angle=90)
+                     enc_x1 + 15.0, enc_y1 + 40.0 + di * 15.0, angle=90)
         ka = S.pin_xy(d, "2")  # anode (top) -> node ENC1_SW
         kk = S.pin_xy(d, "1")  # cathode (bottom) -> row
         if ka:
-            S.wire(ka[0], ka[1], ka[0], ka[1] - 2.54)
-            S.label(pads.get("2"), ka[0], ka[1] - 2.54, angle=90, justify="right")
+            S.wire(ka[0], ka[1], ka[0], ka[1] - 3.81)
+            S.label(pads.get("2"), ka[0], ka[1] - 3.81, angle=90, justify="right")
         if kk:
-            S.wire(kk[0], kk[1], kk[0], kk[1] + 2.54)
-            S.label(pads.get("1"), kk[0], kk[1] + 2.54, angle=270, justify="right")
+            S.wire(kk[0], kk[1], kk[0], kk[1] + 3.81)
+            S.label(pads.get("1"), kk[0], kk[1] + 3.81, angle=270, justify="right")
 
     # --- Power section (battery + power switch + reset) ---
     pwr_items = [(r, c) for r, c in extras
                  if any(k in c[0] for k in ("battery", "power_switch", "reset"))]
-    pwr_x1, pwr_y1 = ox, enc_y2 + 10.0
-    pwr_x2, pwr_y2 = ox + 70.0, enc_y2 + 60.0
+    pwr_x1, pwr_y1 = ox, enc_y2 + 12.0
+    pwr_x2, pwr_y2 = ox + 95.0, enc_y2 + 72.0
     S.box(pwr_x1, pwr_y1, pwr_x2, pwr_y2)
     S.text("Power / Reset", pwr_x1 + 2.0, pwr_y1 - 3.0, size=3.0)
     S.note(
@@ -425,9 +492,9 @@ def main():
         "Reset (Panasonic EVQ-PUC02K) shorts RST to GND for reflashing.",
         pwr_x1 + 2.0, pwr_y1 + 1.5,
     )
-    # Lay the three parts out left-to-right, each in its own column so their
-    # pin labels can't overlap.
-    px = pwr_x1 + 15.0
+    # Lay the three parts out left-to-right with generous spacing; use the
+    # directional emitter so each part's pins fan out cleanly.
+    px = pwr_x1 + 20.0
     for ref, (fpid, val, pads) in pwr_items:
         if "battery" in fpid:
             label = "Battery"
@@ -436,9 +503,9 @@ def main():
         else:
             label = "Reset"
         placed = S.symbol(SYMBOL_MAP[fpid][0], ref, label,
-                          px, pwr_y1 + 35.0, angle=0)
-        emit_pins_vertical(placed, pads, SYMBOL_MAP[fpid][3])
-        px += 22.86
+                          px, pwr_y1 + 42.0, angle=0)
+        emit_pins_directional(placed, pads, SYMBOL_MAP[fpid][3], stub=6.35)
+        px += 30.0
 
     sch = S.render(paper="A1")
     path = f"{out_dir}/{proj}.kicad_sch"
