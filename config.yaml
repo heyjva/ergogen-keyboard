@@ -257,10 +257,10 @@ pcbs:
           reversible: false
           from: BAT_P
           to: RAW
-      # ---- Reset button (THT top), Back side ----
+      # ---- Reset button (Panasonic EVQ-PUC02K, SMD side-operated), Back side ----
       # Connects RST -> GND; does not use a GPIO.
       reset:
-        what: ceoloide/reset_switch_tht_top
+        what: ceoloide/reset_switch_smd_side
         where:
           ref: main_single_home
           shift: [.86px, 0.65py]

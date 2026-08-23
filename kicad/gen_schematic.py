@@ -41,6 +41,8 @@ SYMBOL_MAP = {
         {"1": "1", "2": "2", "3": "3"}, "SW"),
     "ceoloide:reset_switch_tht_top": (
         "Switch:SW_Push", "Switch", "SW_Push", {"1": "1", "2": "2"}, "SW"),
+    "ceoloide:reset_switch_smd_side": (
+        "Switch:SW_Push", "Switch", "SW_Push", {"1": "1", "2": "2"}, "SW"),
     "ceoloide:mcu_nice_nano": (
         "Connector_Generic:Conn_02x12_Odd_Even", "Connector_Generic",
         "Conn_02x12_Odd_Even", {str(i): str(i) for i in range(1, 25)}, "U"),
@@ -335,6 +337,22 @@ def main():
                 S.wire(pxy[0], pxy[1], pxy[0] - 5.08, pxy[1])
                 S.label(net, pxy[0] - 5.08, pxy[1], angle=0, justify="right")
 
+    def emit_pins_vertical(placed, pads, padmap):
+        # Fan pin labels out to the right with increasing stub lengths so labels
+        # from different pins never coincide (avoids accidental net merges).
+        i = 0
+        for pad_name, net in pads.items():
+            if not net:
+                continue
+            pin_num = padmap.get(pad_name)
+            pxy = S.pin_xy(placed, pin_num) if pin_num else None
+            if not pxy:
+                continue
+            off = 5.08 + i * 2.54
+            S.wire(pxy[0], pxy[1], pxy[0] + off, pxy[1])
+            S.label(net, pxy[0] + off, pxy[1], angle=0, justify="left")
+            i += 1
+
     extras_d = {r: c for r, c in extras}
 
     # --- Microcontroller section ---
@@ -385,27 +403,31 @@ def main():
             S.label(pads.get("1"), kk[0], kk[1] + 2.54, angle=270, justify="right")
 
     # --- Power section (battery + power switch + reset) ---
-    pwr_x1, pwr_y1, pwr_x2, pwr_y2 = ox, enc_y2 + 10.0, ox + 70.0, enc_y2 + 70.0
+    pwr_items = [(r, c) for r, c in extras
+                 if any(k in c[0] for k in ("battery", "power_switch", "reset"))]
+    pwr_x1, pwr_y1 = ox, enc_y2 + 10.0
+    pwr_x2, pwr_y2 = ox + 70.0, enc_y2 + 60.0
     S.box(pwr_x1, pwr_y1, pwr_x2, pwr_y2)
     S.text("Power / Reset", pwr_x1 + 2.0, pwr_y1 - 3.0, size=3.0)
     S.note(
         "Battery+ -> power switch -> nice!nano RAW; Battery- -> GND.\\n"
-        "Reset button shorts RST to GND for reflashing.",
+        "Reset (Panasonic EVQ-PUC02K) shorts RST to GND for reflashing.",
         pwr_x1 + 2.0, pwr_y1 + 1.5,
     )
-    py = pwr_y1 + 30.0
-    for ref, (fpid, val, pads) in extras:
+    # Lay the three parts out left-to-right, each in its own column so their
+    # pin labels can't overlap.
+    px = pwr_x1 + 15.0
+    for ref, (fpid, val, pads) in pwr_items:
         if "battery" in fpid:
             label = "Battery"
         elif "power_switch" in fpid:
             label = "Power SW"
-        elif "reset" in fpid:
-            label = "Reset"
         else:
-            continue
-        placed = S.symbol(SYMBOL_MAP[fpid][0], ref, label, pwr_x1 + 30.0, py)
-        emit_pins(placed, pads, SYMBOL_MAP[fpid][3], side="right")
-        py += 20.0
+            label = "Reset"
+        placed = S.symbol(SYMBOL_MAP[fpid][0], ref, label,
+                          px, pwr_y1 + 35.0, angle=0)
+        emit_pins_vertical(placed, pads, SYMBOL_MAP[fpid][3])
+        px += 22.86
 
     sch = S.render(paper="A1")
     path = f"{out_dir}/{proj}.kicad_sch"

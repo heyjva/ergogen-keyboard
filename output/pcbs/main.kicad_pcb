@@ -11,7 +11,7 @@
   (paper "User" 171.00 160.08)
   (title_block
     (title "main")
-    (date "2026-08-16")
+    (date "2026-08-23")
     (rev "v1.0.0")
     (company "Unknown")
   )
@@ -3066,28 +3066,40 @@
   )
     
 
-  (footprint "ceoloide:reset_switch_tht_top"
+  (footprint "ceoloide:reset_switch_smd_side"
     (layer "B.Cu")
     (at 152.92000000000002 63.85 90)
     (property "Reference" "RST1"
-      (at 0 2.55 180)
+      (at 0 0 90)
       (layer "B.SilkS")
       hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
-        
-    (fp_text user "RST" (at 0 0 90) (layer "B.SilkS") (effects (font (size 1 1) (thickness 0.15)) (justify mirror)))
-    (fp_line (start 3 1.5) (end 3 1.75) (layer "B.SilkS") (stroke (width 0.15) (type solid)))
-    (fp_line (start 3 1.75) (end -3 1.75) (layer "B.SilkS") (stroke (width 0.15) (type solid)))
-    (fp_line (start -3 1.75) (end -3 1.5) (layer "B.SilkS") (stroke (width 0.15) (type solid)))
-    (fp_line (start -3 -1.5) (end -3 -1.75) (layer "B.SilkS") (stroke (width 0.15) (type solid)))
-    (fp_line (start -3 -1.75) (end 3 -1.75) (layer "B.SilkS") (stroke (width 0.15) (type solid)))
-    (fp_line (start 3 -1.75) (end 3 -1.5) (layer "B.SilkS") (stroke (width 0.15) (type solid)))
-        
-    (pad "2" thru_hole circle (at -3.25 0 90) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 3 "GND"))
-    (pad "1" thru_hole circle (at 3.25 0 90) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 46 "RST"))
+    (attr smd)
+    (fp_line (start -2.35 -1.75) (end -2.35 1.75) (stroke (width 0.1) (type solid)) (layer "Dwgs.User"))
+    (fp_line (start -2.35 -1.75) (end 2.35 -1.75) (stroke (width 0.1) (type solid)) (layer "Dwgs.User"))
+    (fp_line (start -2.35 1.75) (end 2.35 1.75) (stroke (width 0.1) (type solid)) (layer "Dwgs.User"))
+    (fp_line (start -1.3 -2.75) (end -1.3 -1.75) (stroke (width 0.1) (type solid)) (layer "Dwgs.User"))
+    (fp_line (start -1.3 -2.75) (end 1.3 -2.75) (stroke (width 0.1) (type solid)) (layer "Dwgs.User"))
+    (fp_line (start 1.3 -2.75) (end 1.3 -1.75) (stroke (width 0.1) (type solid)) (layer "Dwgs.User"))
+    (fp_line (start 2.35 -1.75) (end 2.35 1.75) (stroke (width 0.1) (type solid)) (layer "Dwgs.User"))
+    
+    (pad "1" smd rect (at -2.625 -0.85 270) (size 1.55 1) (layers "B.Cu" "B.Paste" "B.Mask") (net 3 "GND"))
+    (pad "2" smd rect (at -2.625 0.85 270) (size 1.55 1) (layers "B.Cu" "B.Paste" "B.Mask") (net 46 "RST"))
+    (pad "3" smd rect (at 2.625 -0.85 270) (size 1.55 1) (layers "B.Cu" "B.Paste" "B.Mask") (net 3 "GND"))
+    (pad "4" smd rect (at 2.625 0.85 270) (size 1.55 1) (layers "B.Cu" "B.Paste" "B.Mask") (net 46 "RST"))
+    
+    (fp_line (start -2.35 -1.5) (end -2.35 -1.75) (stroke (width 0.1) (type solid)) (layer "B.SilkS"))
+    (fp_line (start -2.35 1.5) (end -2.35 1.75) (stroke (width 0.1) (type solid)) (layer "B.SilkS"))
+    (fp_line (start -2.1 -1.75) (end -2.35 -1.75) (stroke (width 0.1) (type solid)) (layer "B.SilkS"))
+    (fp_line (start -2.1 1.75) (end -2.35 1.75) (stroke (width 0.1) (type solid)) (layer "B.SilkS"))
+    (fp_line (start 2.1 -1.75) (end 2.35 -1.75) (stroke (width 0.1) (type solid)) (layer "B.SilkS"))
+    (fp_line (start 2.1 1.75) (end 2.35 1.75) (stroke (width 0.1) (type solid)) (layer "B.SilkS"))
+    (fp_line (start 2.35 -1.5) (end 2.35 -1.75) (stroke (width 0.1) (type solid)) (layer "B.SilkS"))
+    (fp_line (start 2.35 1.5) (end 2.35 1.75) (stroke (width 0.1) (type solid)) (layer "B.SilkS"))
+    
   )
-        
+    
 
   (footprint "ceoloide:mounting_hole_plated"
     (layer "B.Cu")
