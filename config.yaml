@@ -153,6 +153,9 @@ pcbs:
           include_keycap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
+          switch_3dmodel_filename: "${KIPRJMOD}/3d_models/Choc_V1_Switch.step"
+          hotswap_3dmodel_filename: "${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step"
+          keycap_3dmodel_filename: "${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step"
       # ---- Per-key diodes: THT/SMD SOD-123, single-side (Back) ----
       diode:
         what: ceoloide/diode_tht_sod123
@@ -163,6 +166,7 @@ pcbs:
           include_tht: false
           from: "{{colrow}}"
           to: "{{row_net}}"
+          diode_3dmodel_filename: "${KIPRJMOD}/3d_models/Diode_1N4148W.step"
         adjust:
           shift: [0, -5]
       # ---- nice!nano MCU, single-side (Back) ----
@@ -197,6 +201,7 @@ pcbs:
           # Rotary encoder signal (EVQWGD001) on free pins
           P0: ENC1_A
           P1: ENC1_C
+          mcu_3dmodel_filename: "${KIPRJMOD}/3d_models/Nice_Nano_V2.step"
       # ---- Rotary encoder 1 (Panasonic EVQWGD001), Back side ----
       # Placeholder position; adjust `where` (ref/shift/rotate) to taste.
       # The push-switch (pins 1 & 2) is wired into the key matrix on a free
@@ -229,6 +234,7 @@ pcbs:
           include_tht: false
           from: ENC1_SW
           to: P11
+          diode_3dmodel_filename: "${KIPRJMOD}/3d_models/Diode_1N4148W.step"
         adjust:
           shift: [4, -5]
       # ---- Battery connector (JST-PH 2-pin), Back side ----
@@ -257,19 +263,21 @@ pcbs:
           reversible: false
           from: BAT_P
           to: RAW
+          switch_3dmodel_filename: "${KIPRJMOD}/3d_models/Switch_Power.step"
       # ---- Reset button (Panasonic EVQ-PUC02K, SMD side-operated), Back side ----
       # Connects RST -> GND; does not use a GPIO.
       reset:
         what: ceoloide/reset_switch_smd_side
         where:
           ref: main_single_home
-          shift: [.86px, 0.65py]
-          rotate: 90
+          shift: [.9px, 0.65py]
+          rotate: -90
         params:
           side: B
           reversible: false
           from: GND
           to: RST
+          reset_switch_3dmodel_filename: "${KIPRJMOD}/3d_models/Switch_Reset.step"
       # ---- Mounting holes (M2, plated) at board corners ----
       mounting_hole_tl:
         what: ceoloide/mounting_hole_plated
