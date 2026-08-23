@@ -73,12 +73,12 @@ def build_nice_nano_symbol():
     (RAW/GND/VCC/P0-P21). Pad numbers match Conn_02x12_Odd_Even so the
     generator's pad->pin mapping still works."""
     rows = 12
-    pitch = 2.54
-    half_h = (rows - 1) * pitch / 2.0        # 13.97
-    body_w = 15.24
+    pitch = 5.08                             # roomy pitch so net labels clear
+    half_h = (rows - 1) * pitch / 2.0
+    body_w = 20.32
     x_left = -body_w / 2.0
     x_right = body_w / 2.0
-    pin_len = 3.81
+    pin_len = 5.08
     top = half_h + pitch                     # a little headroom
     bot = -half_h - pitch
 
@@ -561,7 +561,8 @@ def main():
     # clear of the encoder's pins.
     for di, (dref, (fpid, val, pads)) in enumerate(orphan_diodes):
         d = S.symbol("Device:D", dref, "D",
-                     enc_x1 + 15.0, enc_y1 + 40.0 + di * 15.0, angle=90)
+                     enc_x1 + 15.0, enc_y1 + 40.0 + di * 15.0, angle=90,
+                     hide_value=True, ref_dx=5.08, ref_dy=0.0, ref_size=1.0)
         ka = S.pin_xy(d, "2")  # anode (top) -> node ENC1_SW
         kk = S.pin_xy(d, "1")  # cathode (bottom) -> row
         if ka:
