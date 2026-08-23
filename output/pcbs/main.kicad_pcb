@@ -3613,6 +3613,13 @@
       
       (pad "" np_thru_hole circle (at 5.625 6.3 0) (size 1.5 1.5) (drill 1.5) (layers "*.Cu" "*.Mask"))
     
+      
+    (model ${KIPRJMOD}/3d_models/EVQWGD001_Encoder.step
+      (offset (xyz 0 0 -1.6))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 0))
+    )
+      
   )
     
 
@@ -3684,6 +3691,12 @@
         (pad "1" thru_hole roundrect (at 1 0 90) (size 1.2 1.75) (drill 0.75) (layers "*.Cu" "*.Mask") (roundrect_rratio 0.20) (net 3 "GND"))
         (pad "2" thru_hole oval (at -1 0 90) (size 1.2 1.75) (drill 0.75) (layers "*.Cu" "*.Mask") (net 82 "BAT_P"))
         
+    (model ${KIPRJMOD}/3d_models/JST_PH_S2B_2pin.step
+      (offset (xyz 0 0 -1.6))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 180 0))
+    )
+    
     )
         
 

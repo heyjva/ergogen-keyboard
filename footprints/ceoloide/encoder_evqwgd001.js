@@ -41,6 +41,10 @@ module.exports = {
     B: { type: 'net', value: undefined },
     C: { type: 'net', value: undefined },
     D: { type: 'net', value: undefined },
+    encoder_3dmodel_filename: '',
+    encoder_3dmodel_xyz_offset: [0, 0, 0],
+    encoder_3dmodel_xyz_scale: [1, 1, 1],
+    encoder_3dmodel_xyz_rotation: [0, 0, 0],
   },
   body: p => {
     const standard_opening = `
@@ -91,6 +95,13 @@ module.exports = {
     `
 
     const standard_closing = `
+      ${p.encoder_3dmodel_filename ? `
+    (model ${p.encoder_3dmodel_filename}
+      (offset (xyz ${p.encoder_3dmodel_xyz_offset[0]} ${p.encoder_3dmodel_xyz_offset[1]} ${p.encoder_3dmodel_xyz_offset[2]}))
+      (scale (xyz ${p.encoder_3dmodel_xyz_scale[0]} ${p.encoder_3dmodel_xyz_scale[1]} ${p.encoder_3dmodel_xyz_scale[2]}))
+      (rotate (xyz ${p.encoder_3dmodel_xyz_rotation[0]} ${p.encoder_3dmodel_xyz_rotation[1]} ${p.encoder_3dmodel_xyz_rotation[2]}))
+    )
+      ` : ''}
   )
     `
 
