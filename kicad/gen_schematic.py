@@ -44,9 +44,83 @@ SYMBOL_MAP = {
     "ceoloide:reset_switch_smd_side": (
         "Switch:SW_Push", "Switch", "SW_Push", {"1": "1", "2": "2"}, "SW"),
     "ceoloide:mcu_nice_nano": (
-        "Connector_Generic:Conn_02x12_Odd_Even", "Connector_Generic",
-        "Conn_02x12_Odd_Even", {str(i): str(i) for i in range(1, 25)}, "U"),
+        "keeb:nice_nano", None, "nice_nano",
+        {str(i): str(i) for i in range(1, 25)}, "U"),
 }
+
+# Physical nice!nano pin names by connector pad number (matches the ceoloide
+# mcu_nice_nano footprint socket order): pad(2k-1) = left of row k, pad(2k) =
+# right of row k, top -> bottom.
+NICE_NANO_PINS = {
+    "1": "P1",  "2": "RAW",
+    "3": "P0",  "4": "GND",
+    "5": "GND", "6": "RST",
+    "7": "GND", "8": "VCC",
+    "9": "P2",  "10": "P21",
+    "11": "P3", "12": "P20",
+    "13": "P4", "14": "P19",
+    "15": "P5", "16": "P18",
+    "17": "P6", "18": "P15",
+    "19": "P7", "20": "P14",
+    "21": "P8", "22": "P16",
+    "23": "P9", "24": "P10",
+}
+
+
+def build_nice_nano_symbol():
+    """Return (symbol_sexpr, pin_positions) for a dedicated nice!nano symbol:
+    a 2-column DIP body with each pin labelled by its physical pin name
+    (RAW/GND/VCC/P0-P21). Pad numbers match Conn_02x12_Odd_Even so the
+    generator's pad->pin mapping still works."""
+    rows = 12
+    pitch = 2.54
+    half_h = (rows - 1) * pitch / 2.0        # 13.97
+    body_w = 15.24
+    x_left = -body_w / 2.0
+    x_right = body_w / 2.0
+    pin_len = 3.81
+    top = half_h + pitch                     # a little headroom
+    bot = -half_h - pitch
+
+    lines = []
+    lines.append('(symbol "keeb:nice_nano" (pin_names (offset 0.762)) '
+                 '(in_bom yes) (on_board yes)')
+    lines.append('  (property "Reference" "U" (at 0 %.2f 0) '
+                 '(effects (font (size 1.27 1.27))))' % (top + 1.27))
+    lines.append('  (property "Value" "nice!nano" (at 0 %.2f 0) '
+                 '(effects (font (size 1.27 1.27))))' % (bot - 1.27))
+    # body rectangle
+    lines.append('  (symbol "nice_nano_0_1"')
+    lines.append('    (rectangle (start %.2f %.2f) (end %.2f %.2f) '
+                 '(stroke (width 0.254) (type default)) '
+                 '(fill (type background)))' % (x_left, top, x_right, bot))
+    lines.append('  )')
+    lines.append('  (symbol "nice_nano_1_1"')
+    pin_pos = {}
+    for k in range(1, rows + 1):
+        y = half_h - (k - 1) * pitch
+        left_pad = str(2 * k - 1)
+        right_pad = str(2 * k)
+        lname = NICE_NANO_PINS[left_pad]
+        rname = NICE_NANO_PINS[right_pad]
+        # left pin: endpoint at (x_left - pin_len, y), points right (angle 0)
+        lines.append(
+            '    (pin passive line (at %.2f %.2f 0) (length %.2f) '
+            '(name "%s" (effects (font (size 1.0 1.0)))) '
+            '(number "%s" (effects (font (size 1.0 1.0)))))'
+            % (x_left - pin_len, y, pin_len, lname, left_pad))
+        pin_pos[left_pad] = (x_left - pin_len, y, 0)
+        # right pin: endpoint at (x_right + pin_len, y), points left (angle 180)
+        lines.append(
+            '    (pin passive line (at %.2f %.2f 180) (length %.2f) '
+            '(name "%s" (effects (font (size 1.0 1.0)))) '
+            '(number "%s" (effects (font (size 1.0 1.0)))))'
+            % (x_right + pin_len, y, pin_len, rname, right_pad))
+        pin_pos[right_pad] = (x_right + pin_len, y, 180)
+    lines.append('  )')
+    lines.append(')')
+    return "\n".join(lines), pin_pos
+
 
 COLS = ["P15", "P16", "P17", "P18", "P19", "P20", "P21"]
 ROWS = ["P11", "P12", "P13", "P14", "P2"]
@@ -102,6 +176,11 @@ class Sch:
 
     def load_symbol(self, lib_id):
         if lib_id in self.sym_cache:
+            return self.sym_cache[lib_id]
+        # Custom, generator-built symbols (e.g. the labelled nice!nano).
+        if lib_id == "keeb:nice_nano":
+            blk, pinpos = build_nice_nano_symbol()
+            self.sym_cache[lib_id] = (blk, pinpos, "nice_nano")
             return self.sym_cache[lib_id]
         libf, symname = None, None
         for _lib_id, _libf, _sym, *_ in SYMBOL_MAP.values():
