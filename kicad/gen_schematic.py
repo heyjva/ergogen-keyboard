@@ -157,6 +157,14 @@ class Sch:
             f'(stroke (width 0) (type default)) (uuid {uid()}))'
         )
 
+    def junction(self, x, y):
+        # Junction dot so a tap wire meeting a rail is treated as connected.
+        x, y = snap(x), snap(y)
+        self.items.append(
+            f'  (junction (at {x:.2f} {y:.2f}) (diameter 0) (color 0 0 0 0) '
+            f'(uuid {uid()}))'
+        )
+
     def label(self, net, x, y, angle=0, justify="left"):
         x, y = snap(x), snap(y)
         self.items.append(
@@ -247,15 +255,19 @@ def main():
 
     S = Sch()
 
-    # ===== Switch matrix section (Lily58-style horizontal switch->diode cells,
-    #       COL bus tags across the top, ROW bus tags down the left) =====
-    cx0, cy0 = 55.0, 45.0
-    cell_w, cell_h = 22.86, 33.02
+    # ===== Switch matrix section (Lily58-style: drawn COL/ROW bus rails,
+    #       cells wired to them; labels only at the bus entry points) =====
+    # Use grid-aligned (multiples of 1.27) geometry so pin taps land exactly on
+    # the rails.
+    cell_w, cell_h = 25.4, 33.02          # 20 and 26 grid units
     n_cols, n_rows = len(COLS), len(ROWS)
-    mat_x1 = cx0 - 30.0
-    mat_y1 = cy0 - 22.0
-    mat_x2 = cx0 + n_cols * cell_w + 6.0
-    mat_y2 = cy0 + n_rows * cell_h + 4.0
+    cx0, cy0 = 69.85, 55.88               # first switch center (grid aligned)
+    col_rail_dx = 12.7                    # COL rail sits left of the switch
+    row_rail_dy = 22.86                   # ROW rail sits below the diode
+    mat_x1 = cx0 - col_rail_dx - 12.7
+    mat_y1 = cy0 - 25.4
+    mat_x2 = cx0 + (n_cols - 1) * cell_w + 19.05
+    mat_y2 = cy0 + (n_rows - 1) * cell_h + row_rail_dy + 8.89
 
     S.box(mat_x1, mat_y1, mat_x2, mat_y2)
     S.text("Switch Matrix", mat_x1 + 2.0, mat_y1 - 3.0, size=3.0)
@@ -265,48 +277,47 @@ def main():
         mat_x1 + 2.0, mat_y1 + 1.5, size=1.27,
     )
 
-    # Column bus tags across the top (visual guide + net reference).
-    col_x = {}
-    for ci, col in enumerate(COLS):
-        x = cx0 + ci * cell_w
-        col_x[col] = x
-        S.hlabel(col, x, mat_y1 + 8.0, angle=90, justify="right", shape="output")
+    # Geometry of every column/row line (all grid-aligned).
+    col_x = {c: cx0 + i * cell_w for i, c in enumerate(COLS)}
+    row_y = {r: cy0 + i * cell_h for i, r in enumerate(ROWS)}
+    row_rail_y = {r: row_y[r] + row_rail_dy for r in ROWS}
 
-    # Row bus tags down the left (visual guide + net reference).
-    row_y = {}
-    for ri, row in enumerate(ROWS):
-        y = cy0 + ri * cell_h
-        row_y[row] = y
-        S.hlabel(row, mat_x1 + 4.0, y, angle=0, justify="right", shape="output")
+    rail_left = snap(mat_x1 + 5.08)
+    rail_right = snap(mat_x2 - 5.08)
+
+    # Horizontal ROW rails only (drawn wires, one net each) with the ROW name
+    # labelled at the left. COLumns enter as labels on each switch's top pin
+    # (like the reference schematic) -- this avoids crossing COL/ROW buses that
+    # would otherwise short the matrix together.
+    for r in ROWS:
+        ry = row_rail_y[r]
+        S.wire(rail_left, ry, rail_right, ry)
+        # Label placed exactly on the rail's left endpoint so it attaches.
+        S.label(r, rail_left, ry, angle=180, justify="right")
 
     for (col, row), (ref, node) in sw_cell.items():
         if col not in COLS or row not in ROWS:
             continue
         x = col_x[col]
         y = row_y[row]
-        # Vertical cell: switch on top, diode below. Switch pin1 (top) -> COL,
-        # pin2 (bottom) -> node; diode anode (top) -> node, cathode (bottom) ->
-        # ROW. Connectivity is entirely by net-name labels (robust); the parts
-        # are stacked with generous spacing so labels never collide.
+        ry = row_rail_y[row]
+        # Switch (vertical, angle 90): top pin -> COL label; bottom pin -> diode.
         sw = S.symbol("Switch:SW_Push", ref, "SW_Push", x, y, angle=90)
-        p1 = S.pin_xy(sw, "1")  # top
-        p2 = S.pin_xy(sw, "2")  # bottom
-        if p1:
-            S.wire(p1[0], p1[1], p1[0], p1[1] - 2.54)
-            S.label(col, p1[0], p1[1] - 2.54, angle=90, justify="right")
-        if p2:
-            S.wire(p2[0], p2[1], p2[0], p2[1] + 2.54)
-            S.label(node, p2[0], p2[1] + 2.54, angle=270, justify="right")
+        p_top = S.pin_xy(sw, "2")     # top
+        p_bot = S.pin_xy(sw, "1")     # bottom
+        if p_top:
+            S.wire(p_top[0], p_top[1], p_top[0], p_top[1] - 3.81)
+            S.label(col, p_top[0], p_top[1] - 3.81, angle=90, justify="right")
+        # Diode straight below; cathode drops onto the horizontal ROW rail.
         dref = diode_ref.get(node, f"D_{ref}")
         d = S.symbol("Device:D", dref, "D", x, y + 12.7, angle=90)
-        da = S.pin_xy(d, "2")  # anode (top) -> node
-        dk = S.pin_xy(d, "1")  # cathode (bottom) -> ROW
-        if da:
-            S.wire(da[0], da[1], da[0], da[1] - 2.54)
-            S.label(node, da[0], da[1] - 2.54, angle=90, justify="right")
+        da = S.pin_xy(d, "2")  # anode (top)
+        dk = S.pin_xy(d, "1")  # cathode (bottom)
+        if p_bot and da:
+            S.wire(p_bot[0], p_bot[1], da[0], da[1])   # straight down
         if dk:
-            S.wire(dk[0], dk[1], dk[0], dk[1] + 2.54)
-            S.label(row, dk[0], dk[1] + 2.54, angle=270, justify="right")
+            S.wire(dk[0], dk[1], dk[0], ry)            # cathode to ROW rail
+            S.junction(dk[0], ry)
 
     # ===== Everything else: MCU, encoder, power, reset, battery =====
     ox = mat_x2 + 25.0
