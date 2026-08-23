@@ -235,7 +235,7 @@ pcbs:
           encoder_3dmodel_filename: "${KIPRJMOD}/3d_models/EVQWGD001_Encoder.step"
           encoder_3dmodel_xyz_scale: [1, 1, 1]
           encoder_3dmodel_xyz_rotation: [0, 180, 0]
-          encoder_3dmodel_xyz_offset: [0, 0, -1.6]
+          encoder_3dmodel_xyz_offset: [0, 0, 0]
       # Diode for encoder 1 push-switch: ENC1_SW -> P11 (num row)
       encoder1_diode:
         what: ceoloide/diode_tht_sod123
@@ -268,8 +268,8 @@ pcbs:
           BAT_P: BAT_P
           BAT_N: GND
           battery_connector_3dmodel_filename: "${KIPRJMOD}/3d_models/JST_PH_S2B_2pin.step"
-          battery_connector_3dmodel_xyz_rotation: [0, 180, 0]
-          battery_connector_3dmodel_xyz_offset: [0, 0, -1.6]
+          battery_connector_3dmodel_xyz_rotation: [0, 0, 0]
+          battery_connector_3dmodel_xyz_offset: [0, 0, 0]
       # ---- Power switch (SMD side-actuated), Back side ----
       # Switches battery positive (BAT_P) to the nice!nano RAW pin.
       power_switch:
@@ -300,8 +300,8 @@ pcbs:
           from: GND
           to: RST
           reset_switch_3dmodel_filename: "${KIPRJMOD}/3d_models/Switch_Reset.step"
-          reset_switch_3dmodel_xyz_rotation: [90, 0, 90]
-          reset_switch_3dmodel_xyz_offset: [0, 0, -1.6]
+          reset_switch_3dmodel_xyz_rotation: [0, 0, 0]
+          reset_switch_3dmodel_xyz_offset: [0, 0, 0]
       # ---- Mounting holes (M2, plated) at board corners ----
       mounting_hole_tl:
         what: ceoloide/mounting_hole_plated

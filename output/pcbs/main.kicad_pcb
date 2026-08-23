@@ -3615,7 +3615,7 @@
     
       
     (model ${KIPRJMOD}/3d_models/EVQWGD001_Encoder.step
-      (offset (xyz 0 0 -1.6))
+      (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 0))
     )
@@ -3692,9 +3692,9 @@
         (pad "2" thru_hole oval (at -1 0 90) (size 1.2 1.75) (drill 0.75) (layers "*.Cu" "*.Mask") (net 82 "BAT_P"))
         
     (model ${KIPRJMOD}/3d_models/JST_PH_S2B_2pin.step
-      (offset (xyz 0 0 -1.6))
+      (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 180 0))
+      (rotate (xyz 0 0 0))
     )
     
     )
@@ -3788,9 +3788,9 @@
     (fp_line (start 2.35 1.5) (end 2.35 1.75) (stroke (width 0.1) (type solid)) (layer "B.SilkS"))
     
     (model ${KIPRJMOD}/3d_models/Switch_Reset.step
-      (offset (xyz 0 0 -1.6))
+      (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
     
   )
