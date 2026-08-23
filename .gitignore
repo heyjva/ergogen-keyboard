@@ -9,3 +9,6 @@
 node_modules/
 *.kicad_prl
 kicad/.history/
+
+# KiCad lock files
+~*.lck

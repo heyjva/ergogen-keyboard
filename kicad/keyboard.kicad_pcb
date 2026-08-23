@@ -230,21 +230,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -312,21 +312,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -394,21 +394,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -476,21 +476,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -558,21 +558,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -640,21 +640,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -722,21 +722,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -804,21 +804,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -886,21 +886,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -968,21 +968,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1050,21 +1050,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1132,21 +1132,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1214,21 +1214,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1296,21 +1296,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1378,21 +1378,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1460,21 +1460,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1542,21 +1542,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1624,21 +1624,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1706,21 +1706,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1788,21 +1788,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1870,21 +1870,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -1952,21 +1952,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -2034,21 +2034,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -2116,21 +2116,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -2198,21 +2198,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -2280,21 +2280,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -2362,21 +2362,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -2444,21 +2444,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -2526,21 +2526,21 @@
     
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
     (model ${KIPRJMOD}/3d_models/Choc_V1_Switch.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
     (model ${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -8.2))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
 	  
   )
@@ -2568,9 +2568,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 2 "outer_bottom"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2597,9 +2597,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 6 "outer_home"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2626,9 +2626,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 7 "outer_top"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2655,9 +2655,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 8 "outer_num"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2684,9 +2684,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 10 "pinky_bottom"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2713,9 +2713,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 11 "pinky_home"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2742,9 +2742,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 12 "pinky_top"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2771,9 +2771,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 13 "pinky_num"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2800,9 +2800,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 15 "ring_bottom"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2829,9 +2829,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 16 "ring_home"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2858,9 +2858,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 17 "ring_top"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2887,9 +2887,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 18 "ring_num"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2916,9 +2916,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 20 "middle_bottom"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2945,9 +2945,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 21 "middle_home"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -2974,9 +2974,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 22 "middle_top"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3003,9 +3003,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 23 "middle_num"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3032,9 +3032,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 25 "index_bottom"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3061,9 +3061,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 26 "index_home"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3090,9 +3090,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 27 "index_top"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3119,9 +3119,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 28 "index_num"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3148,9 +3148,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 30 "inner_bottom"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3177,9 +3177,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 31 "inner_home"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3206,9 +3206,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 32 "inner_top"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3235,9 +3235,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 33 "inner_num"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3264,9 +3264,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 35 "single_home"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3293,9 +3293,9 @@
       (pad "2" smd rect (at 1.65 0 -13) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 36 "inner_cluster"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3322,9 +3322,9 @@
       (pad "2" smd rect (at 1.65 0 -23) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 37 "home_cluster"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3351,9 +3351,9 @@
       (pad "2" smd rect (at 1.65 0 -39) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 38 "outer_cluster"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3380,9 +3380,9 @@
       (pad "2" smd rect (at 1.65 0 -52) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 39 "oouter_cluster"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3572,9 +3572,9 @@
     
     
     (model ${KIPRJMOD}/3d_models/Nice_Nano_V2.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -6.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 0))
     )
     
   )
@@ -3601,14 +3601,6 @@
     (fp_line (start -8.4 7.4) (end -8.4 -6.4) (layer "Dwgs.User") (stroke (width 0.12) (type solid)))
     
       
-      (fp_line (start -9.8 7.3) (end -9.8 -6.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
-      (fp_line (start -7.4 -6.3) (end -7.4 7.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
-      (fp_line (start -9.5 -6.6) (end -7.7 -6.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
-      (fp_line (start -7.7 7.6) (end -9.5 7.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
-      (fp_arc (start -7.7 7.3) (mid -7.4878 7.5121) (end -7.4 7.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
-      (fp_arc (start -9.5 7.3) (mid -9.7121 7.5121) (end -9.5 7.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
-      (fp_arc (start -7.7 -6.3) (mid -7.4878 -6.5121) (end -7.7 -6.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
-      (fp_arc (start -9.5 -6.3) (mid -9.7121 -6.5121) (end -9.8 -6.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
 
       
       (pad "1" thru_hole circle (at 6.85 -6.2 0) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") (net 34 "P15"))
@@ -3646,9 +3638,9 @@
       (pad "2" smd rect (at 1.65 0 0) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask") (net 81 "ENC1_SW"))
         
       (model ${KIPRJMOD}/3d_models/Diode_1N4148W.step
-          (offset (xyz 0 0 0))
+          (offset (xyz 0 0 -2.3))
           (scale (xyz 1 1 1))
-          (rotate (xyz 0 0 0)))
+          (rotate (xyz -90 180 180)))
         
     )
         
@@ -3740,9 +3732,9 @@
     (fp_line (start 1.425 -2.85) (end 1.425 2.85) (layer "B.SilkS") (stroke (width 0.12) (type solid)))
     
     (model ${KIPRJMOD}/3d_models/Switch_Power.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 90 0 90))
     )
     
     (pad "" np_thru_hole circle (at 0.025 -1.5 90) (size 0.9 0.9) (drill 0.9) (layers "*.Cu" "*.Mask"))
@@ -3783,9 +3775,9 @@
     (fp_line (start 2.35 1.5) (end 2.35 1.75) (stroke (width 0.1) (type solid)) (layer "B.SilkS"))
     
     (model ${KIPRJMOD}/3d_models/Switch_Reset.step
-      (offset (xyz 0 0 0))
+      (offset (xyz 0 0 -1.6))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 90 0 90))
     )
     
   )

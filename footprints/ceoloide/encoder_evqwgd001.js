@@ -34,6 +34,7 @@ module.exports = {
     designator: 'ENC',
     side: 'F',
     reversible: false,
+    include_edge_cuts: true,
     from: { type: 'net', value: undefined },
     to: { type: 'net', value: undefined },
     A: { type: 'net', value: undefined },
@@ -64,7 +65,9 @@ module.exports = {
     // `neg` flips X for the mirrored (reverse) placement, `pos` positions the
     // right-hand roller cutout on the correct side.
     const pins = (neg, pos) => `
-      ${'' /* edge cuts for the roller opening */}
+      ${p.include_edge_cuts ? `
+      ${'' /* edge cuts for the roller opening (only when the encoder sits at
+             the board edge; disable via include_edge_cuts for mid-board use) */}
       (fp_line (start ${pos}9.8 7.3) (end ${pos}9.8 -6.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
       (fp_line (start ${pos}7.4 -6.3) (end ${pos}7.4 7.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
       (fp_line (start ${pos}9.5 -6.6) (end ${pos}7.7 -6.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
@@ -73,6 +76,7 @@ module.exports = {
       (fp_arc (start ${pos}9.5 7.3) (mid ${pos}9.7121 7.5121) (end ${pos}9.5 7.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
       (fp_arc (start ${pos}7.7 -6.3) (mid ${pos}7.4878 -6.5121) (end ${pos}7.7 -6.6) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
       (fp_arc (start ${pos}9.5 -6.3) (mid ${pos}9.7121 -6.5121) (end ${pos}9.8 -6.3) (layer "Edge.Cuts") (stroke (width 0.15) (type solid)))
+      ` : ''}
 
       ${'' /* pins */}
       (pad "1" thru_hole circle (at ${neg}6.85 -6.2 ${p.r}) (size 1.6 1.6) (drill 0.9) (layers "*.Cu" "*.Mask") ${p.from.str})

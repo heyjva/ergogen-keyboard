@@ -154,8 +154,14 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}"
           switch_3dmodel_filename: "${KIPRJMOD}/3d_models/Choc_V1_Switch.step"
+          switch_3dmodel_xyz_rotation: [0, 180, 0]
+          switch_3dmodel_xyz_offset: [0, 0, -1.6]
           hotswap_3dmodel_filename: "${KIPRJMOD}/3d_models/Choc_V1_Hotswap.step"
+          hotswap_3dmodel_xyz_rotation: [0, 180, 0]
+          hotswap_3dmodel_xyz_offset: [0, 0, -1.6]
           keycap_3dmodel_filename: "${KIPRJMOD}/3d_models/Choc_V1_Keycap_MBK_Black_1u.step"
+          keycap_3dmodel_xyz_rotation: [0, 180, 0]
+          keycap_3dmodel_xyz_offset: [0, 0, -8.2]
       # ---- Per-key diodes: THT/SMD SOD-123, single-side (Back) ----
       diode:
         what: ceoloide/diode_tht_sod123
@@ -167,6 +173,8 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
           diode_3dmodel_filename: "${KIPRJMOD}/3d_models/Diode_1N4148W.step"
+          diode_3dmodel_xyz_rotation: [-90, 180, 180]
+          diode_3dmodel_xyz_offset: [0, 0, -2.3]
         adjust:
           shift: [0, -5]
       # ---- nice!nano MCU, single-side (Back) ----
@@ -202,6 +210,8 @@ pcbs:
           P0: ENC1_A
           P1: ENC1_C
           mcu_3dmodel_filename: "${KIPRJMOD}/3d_models/Nice_Nano_V2.step"
+          mcu_3dmodel_xyz_rotation: [0, 180, 0]
+          mcu_3dmodel_xyz_offset: [0, 0, -6.6]
       # ---- Rotary encoder 1 (Panasonic EVQWGD001), Back side ----
       # Placeholder position; adjust `where` (ref/shift/rotate) to taste.
       # The push-switch (pins 1 & 2) is wired into the key matrix on a free
@@ -215,6 +225,7 @@ pcbs:
         params:
           side: B
           reversible: false
+          include_edge_cuts: false   # mid-board placement: no board-edge roller slot
           A: ENC1_A
           B: GND
           C: ENC1_C
@@ -235,6 +246,8 @@ pcbs:
           from: ENC1_SW
           to: P11
           diode_3dmodel_filename: "${KIPRJMOD}/3d_models/Diode_1N4148W.step"
+          diode_3dmodel_xyz_rotation: [-90, 180, 180]
+          diode_3dmodel_xyz_offset: [0, 0, -2.3]
         adjust:
           shift: [4, -5]
       # ---- Battery connector (JST-PH 2-pin), Back side ----
@@ -264,6 +277,8 @@ pcbs:
           from: BAT_P
           to: RAW
           switch_3dmodel_filename: "${KIPRJMOD}/3d_models/Switch_Power.step"
+          switch_3dmodel_xyz_rotation: [90, 0, 90]
+          switch_3dmodel_xyz_offset: [0, 0, -1.6]
       # ---- Reset button (Panasonic EVQ-PUC02K, SMD side-operated), Back side ----
       # Connects RST -> GND; does not use a GPIO.
       reset:
@@ -278,6 +293,8 @@ pcbs:
           from: GND
           to: RST
           reset_switch_3dmodel_filename: "${KIPRJMOD}/3d_models/Switch_Reset.step"
+          reset_switch_3dmodel_xyz_rotation: [90, 0, 90]
+          reset_switch_3dmodel_xyz_offset: [0, 0, -1.6]
       # ---- Mounting holes (M2, plated) at board corners ----
       mounting_hole_tl:
         what: ceoloide/mounting_hole_plated
