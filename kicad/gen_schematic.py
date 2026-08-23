@@ -366,14 +366,14 @@ def main():
     # ===== Switch matrix section (Lily58-style: drawn COL/ROW bus rails,
     #       cells wired to them; COL/ROW names labelled once at the rail ends) =====
     # Grid-aligned geometry (multiples of 1.27) so pin taps land exactly on rails.
-    cell_w, cell_h = 30.48, 33.02         # 24 and 26 grid units (wider columns)
+    cell_w, cell_h = 33.02, 33.02         # 26 and 26 grid units (wider columns)
     n_cols, n_rows = len(COLS), len(ROWS)
-    cx0, cy0 = 76.20, 62.23               # first switch center (grid aligned)
-    col_rail_dx = 8.89                    # COL rail sits just left of the switch
+    cx0, cy0 = 82.55, 68.58               # first switch center (grid aligned)
+    col_rail_dx = 13.97                   # COL rail sits well left of the switch
     row_rail_dy = 22.86                   # ROW rail sits below the diode
     mat_x1 = cx0 - col_rail_dx - 15.24
-    mat_y1 = cy0 - 30.48
-    mat_x2 = cx0 + (n_cols - 1) * cell_w + 20.32
+    mat_y1 = cy0 - 34.29
+    mat_x2 = cx0 + (n_cols - 1) * cell_w + 22.86
     mat_y2 = cy0 + (n_rows - 1) * cell_h + row_rail_dy + 10.16
 
     S.box(mat_x1, mat_y1, mat_x2, mat_y2)
@@ -392,7 +392,7 @@ def main():
 
     rail_left = snap(mat_x1 + 5.08)
     rail_right = snap(mat_x2 - 5.08)
-    col_rail_top = snap(mat_y1 + 12.7)
+    col_rail_top = snap(mat_y1 + 8.89)
     col_rail_bot = snap(mat_y2 - 5.08)
 
     # Full vertical COL rails (one net + one label each). Full horizontal ROW
@@ -403,6 +403,8 @@ def main():
     for c in COLS:
         rx = col_rail_x[c]
         S.wire(rx, col_rail_top, rx, col_rail_bot)
+        # COL name label placed exactly on the rail's top endpoint (so it
+        # attaches); the rail top has extra headroom above the switches.
         S.label(c, rx, col_rail_top, angle=90, justify="right")
     for r in ROWS:
         ry = row_rail_y[r]
@@ -470,15 +472,21 @@ def main():
         """Draw a stub wire outward from each pin along its real direction and
         put the net label at the stub end. Handles symbols whose pins point in
         different directions (encoder, SPDT switch) so nothing overlaps the
-        symbol body. With stagger=False all stubs in a given direction share the
-        same length (good for in-line connectors like the nice!nano)."""
+        symbol body. stub lengths are staggered per-direction so labels leaving
+        the same side get horizontal separation."""
         seen = {}
+        emitted_pins = set()
         for pad_name, net in pads.items():
             if not net:
                 continue
             pin_num = padmap.get(pad_name)
             if not pin_num:
                 continue
+            # if two pads map to the same symbol pin (e.g. encoder B and D both
+            # to GND), only draw the label once.
+            if pin_num in emitted_pins:
+                continue
+            emitted_pins.add(pin_num)
             pxy = S.pin_xy(placed, pin_num)
             if not pxy:
                 continue
@@ -555,22 +563,22 @@ def main():
     if enc_ref:
         fpid, val, pads = extras_d[enc_ref]
         placed = S.symbol(SYMBOL_MAP[fpid][0], enc_ref, "EVQWGD001",
-                          enc_x1 + 47.5, enc_y1 + 42.0)
-        emit_pins_directional(placed, pads, SYMBOL_MAP[fpid][3], stub=8.89)
-    # encoder push-switch diode (orphan) drawn to the LEFT of the encoder, well
-    # clear of the encoder's pins.
+                          enc_x1 + 62.0, enc_y1 + 40.0)
+        emit_pins_directional(placed, pads, SYMBOL_MAP[fpid][3], stub=7.62)
+    # encoder push-switch diode (orphan) drawn at the far LEFT of the encoder
+    # box, well clear of the encoder's A/B/C pin labels.
     for di, (dref, (fpid, val, pads)) in enumerate(orphan_diodes):
         d = S.symbol("Device:D", dref, "D",
-                     enc_x1 + 15.0, enc_y1 + 40.0 + di * 15.0, angle=90,
-                     hide_value=True, ref_dx=5.08, ref_dy=0.0, ref_size=1.0)
+                     enc_x1 + 10.0, enc_y1 + 44.0 + di * 15.0, angle=90,
+                     hide_value=True, ref_dx=-6.35, ref_dy=0.0, ref_size=1.0)
         ka = S.pin_xy(d, "2")  # anode (top) -> node ENC1_SW
         kk = S.pin_xy(d, "1")  # cathode (bottom) -> row
         if ka:
-            S.wire(ka[0], ka[1], ka[0], ka[1] - 3.81)
-            S.label(pads.get("2"), ka[0], ka[1] - 3.81, angle=90, justify="right")
+            S.wire(ka[0], ka[1], ka[0], ka[1] - 5.08)
+            S.label(pads.get("2"), ka[0], ka[1] - 5.08, angle=90, justify="right")
         if kk:
-            S.wire(kk[0], kk[1], kk[0], kk[1] + 3.81)
-            S.label(pads.get("1"), kk[0], kk[1] + 3.81, angle=270, justify="right")
+            S.wire(kk[0], kk[1], kk[0], kk[1] + 5.08)
+            S.label(pads.get("1"), kk[0], kk[1] + 5.08, angle=270, justify="right")
 
     # --- Power section (battery + power switch + reset) ---
     pwr_items = [(r, c) for r, c in extras
@@ -585,8 +593,10 @@ def main():
         pwr_x1 + 2.0, pwr_y1 + 1.5,
     )
     # Lay the three parts out left-to-right with generous spacing; use the
-    # directional emitter so each part's pins fan out cleanly.
-    px = pwr_x1 + 20.0
+    # Lay the three parts out left-to-right with generous spacing. Rotate them
+    # 90 deg so their pins point up/down -- vertical stubs stagger cleanly by
+    # length, keeping the net labels from colliding.
+    px = pwr_x1 + 22.0
     for ref, (fpid, val, pads) in pwr_items:
         if "battery" in fpid:
             label = "Battery"
@@ -595,9 +605,10 @@ def main():
         else:
             label = "Reset"
         placed = S.symbol(SYMBOL_MAP[fpid][0], ref, label,
-                          px, pwr_y1 + 42.0, angle=0)
+                          px, pwr_y1 + 40.0, angle=90,
+                          ref_dx=6.35, ref_dy=0.0, ref_size=1.0)
         emit_pins_directional(placed, pads, SYMBOL_MAP[fpid][3], stub=6.35)
-        px += 30.0
+        px += 25.0
 
     sch = S.render(paper="A1")
     path = f"{out_dir}/{proj}.kicad_sch"
