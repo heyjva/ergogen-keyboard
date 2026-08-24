@@ -174,3 +174,28 @@ Requires KiCad installed (`pcbnew` python module + `kicad-cli`):
   and standard KiCad symbol libs are used; these "library not in config"
   warnings are cosmetic.
 
+### JLCPCB design rules
+
+The project is pre-configured for JLCPCB's standard **2-layer, 1oz FR-4**
+process (their cheapest tier), so DRC catches anything they can't make:
+
+- Numeric constraints live in `kicad/keyboard.kicad_pro`
+  (`board.design_settings.rules`): min track/clearance 0.127 mm, min via
+  0.45 mm / 0.3 mm drill, min PTH drill 0.3 mm, min hole-to-hole 0.5 mm,
+  min copper-to-edge 0.3 mm, min silk text 1.0 mm.
+- JLC-specific checks (annular ring, edge clearance, hole-to-hole, silk
+  width/height, silk-to-pad, SMD pad clearance) are in
+  `kicad/keyboard.kicad_dru`.
+- These files are **not** overwritten by `build_kicad_project.sh` (which only
+  regenerates the `.kicad_pcb`/`.kicad_sch`), so the rules persist across
+  rebuilds.
+- Values follow JLCPCB's *recommended* thresholds (not absolute minimums) to
+  avoid extra-cost options. Source:
+  <https://jlcpcb.com/capabilities/pcb-capabilities>
+
+Run a rules check any time with:
+
+```bash
+kicad-cli pcb drc kicad/keyboard.kicad_pcb --severity-error
+```
+
