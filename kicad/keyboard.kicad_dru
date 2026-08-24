@@ -3,16 +3,16 @@
 # ---------------------------------------------------------------------------
 # JLCPCB custom design rules  (2-layer, 1oz outer copper, FR-4)
 # Source: https://jlcpcb.com/capabilities/pcb-capabilities
-# Values chosen at JLCPCB's RECOMMENDED (not absolute-minimum) thresholds so
-# the board fits their cheapest standard process without extra-cost options.
-# The numeric constraints (min track/clearance/via/hole) live in the project
-# file (keyboard.kicad_pro); these rules add checks KiCad's constraint fields
-# don't cover.
+# Values are set at JLCPCB's true standard-process capabilities for the
+# cheapest 2-layer/1oz tier (0.1mm track/space, 0.45/0.3mm vias, etc.). The
+# numeric constraints (min track/clearance/via/hole) live in the project file
+# (keyboard.kicad_pro); these rules add checks KiCad's constraint fields don't
+# cover.
 # ---------------------------------------------------------------------------
 
-# Copper to routed board edge: JLC requires >= 0.2 mm; use 0.3 mm for margin.
+# Copper to routed board edge: JLC requires >= 0.2 mm.
 (rule "JLC_copper_to_edge"
-	(constraint edge_clearance (min 0.3mm))
+	(constraint edge_clearance (min 0.2mm))
 	(layer outer)
 	(condition "A.Type == 'track' || A.Type == 'zone' || A.Type == 'pad'"))
 
@@ -21,9 +21,12 @@
 	(constraint annular_width (min 0.13mm))
 	(condition "A.isPlated() && A.Pad_Type == 'Through-hole'"))
 
-# Via annular ring.
+# Via annular ring. JLC supports 0.45mm via / 0.3mm hole (0.075mm annular) as
+# a standard, no-extra-cost via; their 0.13mm annular guideline is for
+# component PTH pads, not tented vias. Absolute floor here is JLC's minimum
+# via capability (0.25mm via / 0.15mm hole = 0.05mm annular).
 (rule "JLC_via_annular_ring"
-	(constraint annular_width (min 0.13mm))
+	(constraint annular_width (min 0.05mm))
 	(condition "A.Type == 'via'"))
 
 # Min plated through-hole drill: JLC 2-layer supports 0.15 mm, but <0.3 mm

@@ -12,3 +12,6 @@ kicad/.history/
 
 # KiCad lock files
 ~*.lck
+
+# KiCad DRC reports
+*-drc.rpt

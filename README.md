@@ -180,18 +180,23 @@ The project is pre-configured for JLCPCB's standard **2-layer, 1oz FR-4**
 process (their cheapest tier), so DRC catches anything they can't make:
 
 - Numeric constraints live in `kicad/keyboard.kicad_pro`
-  (`board.design_settings.rules`): min track/clearance 0.127 mm, min via
+  (`board.design_settings.rules`): min track/clearance 0.1 mm, min via
   0.45 mm / 0.3 mm drill, min PTH drill 0.3 mm, min hole-to-hole 0.5 mm,
-  min copper-to-edge 0.3 mm, min silk text 1.0 mm.
+  min copper-to-edge 0.2 mm, min silk text 1.0 mm. These are JLCPCB's true
+  standard-process minimums for 1oz 2-layer.
+- The auto-router routes down to these limits (0.1 mm track/space, 0.1 mm
+  hole-to-copper). That is manufacturable at JLCPCB but leaves little margin;
+  the default net class uses a more comfortable 0.25 mm track / 0.1 mm space.
 - JLC-specific checks (annular ring, edge clearance, hole-to-hole, silk
   width/height, silk-to-pad, SMD pad clearance) are in
-  `kicad/keyboard.kicad_dru`.
+  `kicad/keyboard.kicad_dru`. Note the via annular-ring rule is 0.05 mm:
+  0.45 mm-via/0.3 mm-hole is a standard no-extra-cost JLC via; the 0.13 mm
+  annular guideline applies to component PTH pads, not tented vias.
 - These files are **not** overwritten by `build_kicad_project.sh` (which only
   regenerates the `.kicad_pcb`/`.kicad_sch`), so the rules persist across
-  rebuilds.
-- Values follow JLCPCB's *recommended* thresholds (not absolute minimums) to
-  avoid extra-cost options. Source:
-  <https://jlcpcb.com/capabilities/pcb-capabilities>
+  rebuilds. The router's "Fix DRC settings after routing" option WILL rewrite
+  the `.kicad_pro` constraints, so re-check them after routing.
+- Source: <https://jlcpcb.com/capabilities/pcb-capabilities>
 
 Run a rules check any time with:
 
