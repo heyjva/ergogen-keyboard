@@ -10,7 +10,7 @@
   )
   (paper "User" 171.00 160.08)
   (title_block
-    (title "main")
+    (title "main_left")
     (date "2026-08-24")
     (rev "v1.0.0")
     (company "Unknown")

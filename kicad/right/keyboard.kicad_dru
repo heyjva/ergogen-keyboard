@@ -1,0 +1,76 @@
+(version 1)
+
+# ---------------------------------------------------------------------------
+# JLCPCB custom design rules  (2-layer, 1oz outer copper, FR-4)
+# Source: https://jlcpcb.com/capabilities/pcb-capabilities
+# Values are set at JLCPCB's true standard-process capabilities for the
+# cheapest 2-layer/1oz tier (0.1mm track/space, 0.45/0.3mm vias, etc.). The
+# numeric constraints (min track/clearance/via/hole) live in the project file
+# (keyboard.kicad_pro); these rules add checks KiCad's constraint fields don't
+# cover.
+# ---------------------------------------------------------------------------
+
+# Copper to routed board edge: JLC requires >= 0.2 mm.
+(rule "JLC_copper_to_edge"
+	(constraint edge_clearance (min 0.2mm))
+	(layer outer)
+	(condition "A.Type == 'track' || A.Type == 'zone' || A.Type == 'pad'"))
+
+# PTH annular ring: JLC 1oz recommended >= 0.25 mm, absolute min 0.18 mm.
+(rule "JLC_PTH_annular_ring"
+	(constraint annular_width (min 0.13mm))
+	(condition "A.isPlated() && A.Pad_Type == 'Through-hole'"))
+
+# Via annular ring. JLC supports 0.45mm via / 0.3mm hole (0.075mm annular) as
+# a standard, no-extra-cost via; their 0.13mm annular guideline is for
+# component PTH pads, not tented vias. Absolute floor here is JLC's minimum
+# via capability (0.25mm via / 0.15mm hole = 0.05mm annular).
+(rule "JLC_via_annular_ring"
+	(constraint annular_width (min 0.05mm))
+	(condition "A.Type == 'via'"))
+
+# Min plated through-hole drill: JLC 2-layer supports 0.15 mm, but <0.3 mm
+# (and PTH <0.5 mm) is best avoided; enforce 0.3 mm.
+(rule "JLC_min_PTH_drill"
+	(constraint hole_size (min 0.3mm))
+	(condition "A.isPlated() && A.Pad_Type == 'Through-hole'"))
+
+# Min via hole (drill): JLC preferred >= 0.2 mm; use 0.3 mm for the cheap tier.
+(rule "JLC_min_via_drill"
+	(constraint hole_size (min 0.3mm))
+	(condition "A.Type == 'via'"))
+
+# Min non-plated hole diameter: JLC >= 0.5 mm.
+(rule "JLC_min_NPTH"
+	(constraint hole_size (min 0.5mm))
+	(condition "!A.isPlated() && A.Pad_Type == 'NPTH, mechanical'"))
+
+# Pad hole-to-hole spacing: JLC >= 0.45 mm (edge-to-edge).
+(rule "JLC_pad_hole_to_hole"
+	(constraint hole_to_hole (min 0.45mm))
+	(condition "A.Pad_Type == 'Through-hole' && B.Pad_Type == 'Through-hole'"))
+
+# Via hole-to-hole spacing: JLC >= 0.2 mm.
+(rule "JLC_via_hole_to_hole"
+	(constraint hole_to_hole (min 0.2mm))
+	(condition "A.Type == 'via' && B.Type == 'via'"))
+
+# Silkscreen line width: JLC >= 0.15 mm to stay legible.
+(rule "JLC_min_silk_width"
+	(constraint text_thickness (min 0.15mm))
+	(layer "?.Silkscreen"))
+
+# Silkscreen text height: JLC >= 1.0 mm.
+(rule "JLC_min_silk_text_height"
+	(constraint text_height (min 1.0mm))
+	(layer "?.Silkscreen"))
+
+# Silkscreen to solder-mask opening (pad) clearance: JLC >= 0.15 mm.
+(rule "JLC_silk_to_pad"
+	(constraint silk_clearance (min 0.15mm))
+	(layer "?.Silkscreen"))
+
+# SMD pad-to-pad clearance (different nets): JLC >= 0.15 mm.
+(rule "JLC_smd_pad_clearance"
+	(constraint clearance (min 0.15mm))
+	(condition "A.Pad_Type == 'SMD' && B.Pad_Type == 'SMD' && A.NetName != B.NetName"))
